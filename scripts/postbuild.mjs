@@ -1,8 +1,12 @@
 // Ajustes pós `readme-aura build`:
 //
-// 1. Alt text: readme-aura gera as imagens sem alt descritivo (blocos) ou sem alt
-//    nenhum (inline). Lemos o `alt="..."` declarado em cada bloco ```aura do source
-//    e aplicamos no README gerado, casando pelo índice do componente.
+// 1. Imagens: todas as fatias são blocos `inline`, e o readme-aura as junta numa única
+//    linha HTML. Aqui cada <img> recebe:
+//    - o `alt="..."` declarado no bloco ```aura do source (o readme-aura não gera alt);
+//    - largura em % de 800px e nenhuma altura, para escalar junto com o container;
+//    - align="top", que elimina a fresta da linha de base entre as linhas de imagens.
+//    A última peça de cada linha com várias peças perde 0.05% para a soma nunca passar
+//    de 100% por arredondamento (o que jogaria a peça para a linha de baixo).
 //
 // 2. SVGs aninhados: readme-aura transforma cada <svg> do JSX em
 //    <svg x y width height clip-path mask>, mas clip-path/mask num <svg> com x/y
@@ -16,27 +20,40 @@ import { join } from 'node:path';
 const source = process.argv[2] ?? 'readme.source.md';
 const output = process.argv[3] ?? 'README.md';
 const assetsDir = process.argv[4] ?? '.github/assets';
+const CANVAS = 800;
 
 const alts = [...readFileSync(source, 'utf8').matchAll(/^```aura\b(.*)$/gm)].map(
   ([, meta]) => meta.match(/\balt="([^"]*)"/)?.[1] ?? null,
 );
 
 const escapeHtml = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-const escapeMd = (s) => s.replace(/[\\[\]]/g, '\\$&');
 
 let readme = readFileSync(output, 'utf8');
 
-// Blocos: ![readme-aura-component-N](src "title")
-readme = readme.replace(
-  /!\[readme-aura-component-(\d+)\]\(([^ )]+) "[^"]*"\)/g,
-  (match, i, src) => (alts[i] ? `![${escapeMd(alts[i])}](${src})` : match),
-);
+const imgRe = /<img src="([^"]*readme-aura-component-(\d+)-\w+\.svg)" width="(\d+)" height="\d+" \/>/g;
+const images = [...readme.matchAll(imgRe)].map(([tag, src, i, width]) => ({ tag, src, i, width: +width }));
 
-// Inline: <img src=".../readme-aura-component-N-hash.svg" ... />
-readme = readme.replace(
-  /<img src="([^"]*readme-aura-component-(\d+)-\w+\.svg)"/g,
-  (match, src, i) => (alts[i] ? `<img src="${src}" alt="${escapeHtml(alts[i])}"` : match),
-);
+let rowWidth = 0;
+let rowStart = 0;
+images.forEach((img, n) => {
+  rowWidth += img.width;
+  img.pct = (img.width / CANVAS) * 100;
+  if (rowWidth >= CANVAS) {
+    if (n > rowStart) img.pct -= 0.05;
+    rowWidth = 0;
+    rowStart = n + 1;
+  }
+});
+
+for (const { tag, src, i, pct } of images) {
+  const alt = alts[i] ?? '';
+  const width = `${+pct.toFixed(4)}%`;
+  const img = `<img src="${src}" alt="${escapeHtml(alt)}" align="top" width="${width}" />`;
+  // O GitHub envolve toda imagem sem <a> num link para o próprio arquivo. Uma âncora
+  // sem href (<a name>) evita isso, e só os botões com link= ficam clicáveis.
+  const linked = readme.includes(`">${tag}</a>`);
+  readme = readme.replace(tag, linked ? img : `<a name="aura-${i}">${img}</a>`);
+}
 
 writeFileSync(output, readme);
 
