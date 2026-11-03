@@ -1,89 +1,151 @@
 <!--
-  O README é um único canvas (#0C0A11) fatiado em imagens inline. O scripts/postbuild.mjs
-  converte cada <img> para largura em % + align="top", para que as fatias se empilhem sem
-  frestas. Toda fatia tem 800px de largura; as peças da linha de botões somam 800px.
+  O README é um único canvas de 848px (moldura #08090D com orbs em gradiente) fatiado em
+  imagens inline. O scripts/postbuild.mjs converte cada <img> para largura em % + align="top",
+  para que as fatias se empilhem sem frestas. Toda fatia tem 848px de largura; as peças da
+  linha de botões somam 848px.
+
+  Os gradientes da moldura são desenhados em coordenadas do canvas inteiro (846×1846, a área
+  interna à borda); cada fatia desloca o mesmo SVG pelo seu topo (translate y negativo).
+  Topos das fatias: 0 · 445 · 491 · 1435 · 1789. A linha de botões fica fora do alcance
+  dos três gradientes, por isso é só #08090D.
 -->
 
-```aura width=800 height=381 inline alt="José Vieira Neto. Brazilian, based in Málaga, ES, remote only. Senior Software Engineer | Payments & fintech | Distributed Systems | Product, AI. Terminal: deploy idea --to production, shipped: payments, fintech, AI."
-<div style={{ position: 'relative', width: 800, height: 381, boxSizing: 'border-box', background: '#0C0A11', borderTop: '1px solid #23202B', borderLeft: '1px solid #23202B', borderRight: '1px solid #23202B', borderTopLeftRadius: 20, borderTopRightRadius: 20, overflow: 'hidden', padding: '48px 40px 28px', display: 'flex', flexDirection: 'column', gap: 28, color: '#F5F3F7', fontFamily: 'Geist' }}>
+```aura width=848 height=446 inline alt="José Vieira Neto. Brazilian, based in Málaga, ES, remote only. Senior Software Engineer | Payments & fintech | Distributed Systems | AI. Terminal: deploy idea --to production, shipped: payments, fintech, AI."
+<div style={{ position: 'relative', width: 848, height: 446, boxSizing: 'border-box', background: '#08090D', borderTop: '1px solid #1D2027', borderLeft: '1px solid #1D2027', borderRight: '1px solid #1D2027', borderTopLeftRadius: 24, borderTopRightRadius: 24, overflow: 'hidden', padding: '24px 23px 0', display: 'flex', flexDirection: 'column', fontFamily: 'Geist' }}>
   <style>{`
     @keyframes pulse { 0%, 100% { opacity: 1 } 50% { opacity: .35 } }
     @keyframes blink { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
-    @keyframes haze { 0%, 100% { opacity: .85 } 50% { opacity: 1 } }
+    @keyframes drift { 0%, 100% { transform: translate(0, 0) scale(1) } 50% { transform: translate(-30px, 18px) scale(1.06) } }
+    @keyframes line2 { 0%, 40% { opacity: 0; transform: translateX(-6px) } 48%, 90% { opacity: 1; transform: translateX(0) } 100% { opacity: 0; transform: translateX(0) } }
+    @keyframes type { 0% { transform: scaleX(1); opacity: 1; animation-timing-function: steps(28, end) } 32% { transform: scaleX(0); opacity: 1 } 89.9% { transform: scaleX(0); opacity: 0 } 90% { transform: scaleX(1); opacity: 0 } 100% { transform: scaleX(1); opacity: 1 } }
+    @keyframes beam { to { stroke-dashoffset: -2348.5 } }
+    #hero-orbs { transform-box: fill-box; transform-origin: center; animation: drift 16s ease-in-out infinite }
     #hero-live { animation: pulse 2s ease-in-out infinite }
     #hero-cursor { animation: blink 1.1s steps(1) infinite }
-    #hero-haze { animation: haze 6s ease-in-out infinite }
+    path[fill="#9BA2AF"], path[fill="#4FB3B9"], #hero-l2-check, #hero-l2-cursor { animation: line2 7s ease-out infinite }
+    #hero-type-cover { opacity: 0; transform-box: fill-box; transform-origin: right; animation: type 7s linear infinite both }
+    #hero-beam-glow, #hero-beam { animation: beam 8s linear infinite }
+    path[fill="#F3F5F6"] { fill: url(#hero-name-shine) }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important } path[fill="#F3F5F6"] { fill: #F3F5F7 } }
   `}</style>
-  <svg width="798" height="320" viewBox="0 0 798 320" style={{ position: 'absolute', left: 0, top: 0 }}>
+  <svg width="846" height="445" viewBox="0 0 846 445" style={{ position: 'absolute', left: 0, top: 0 }}>
     <defs>
-      <radialGradient id="hero-haze-g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(438.9 0) scale(558.6 320)">
-        <stop offset="0" stopColor="#7A34A8" stopOpacity="0.38" />
-        <stop offset="0.72" stopColor="#7A34A8" stopOpacity="0" />
+      <radialGradient id="cv-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 0) scale(507.6 406.1)">
+        <stop offset="0" stopColor="#3A2F8F" stopOpacity="0.35" />
+        <stop offset="0.7" stopColor="#3A2F8F" stopOpacity="0" />
+      </radialGradient>
+      <radialGradient id="cv-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 830.7) scale(465.3 332.3)">
+        <stop offset="0" stopColor="#1D6B70" stopOpacity="0.22" />
+        <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
+      </radialGradient>
+      <radialGradient id="cv-3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 1846) scale(507.6 369.2)">
+        <stop offset="0" stopColor="#1D6B70" stopOpacity="0.28" />
+        <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
       </radialGradient>
     </defs>
-    <rect id="hero-haze" width="798" height="320" fill="url(#hero-haze-g)" />
+    <rect width="846" height="445" fill="url(#cv-1)" />
+    <rect width="846" height="445" fill="url(#cv-2)" />
+    <rect width="846" height="445" fill="url(#cv-3)" />
   </svg>
-  <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 12 }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: 'GeistMono', fontSize: 12, lineHeight: '16px', color: '#A7A2B3' }}>
-      <svg width="7" height="7" viewBox="0 0 7 7"><circle id="hero-live" cx="3.5" cy="3.5" r="3.5" fill="#B37BFF" /></svg>
-      <span>Brazilian · based in Málaga, ES · remote only</span>
-    </div>
-    <div style={{ fontFamily: 'GeistSemiBold', fontSize: 52, lineHeight: 1.05, letterSpacing: -1.56 }}>José Vieira Neto</div>
-    <div style={{ width: 724, fontSize: 19, lineHeight: 1.5, color: '#A7A2B3' }}>Senior Software Engineer | Payments & fintech | Distributed Systems | Product, AI</div>
-  </div>
-  <div style={{ position: 'relative', height: 152, flexShrink: 0, boxSizing: 'border-box', borderRadius: 14, border: '1px solid #2A2732', background: '#121016', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    <svg width="716" height="150" viewBox="0 0 716 150" style={{ position: 'absolute', left: 0, top: 0 }}>
+  <div style={{ position: 'relative', width: 800, height: 393, flexShrink: 0, boxSizing: 'border-box', borderRadius: 20, background: '#08090D', border: '1px solid #1D2027', overflow: 'hidden', padding: '48px 48px 40px', display: 'flex', flexDirection: 'column', gap: 28, color: '#F3F5F7' }}>
+    <svg width="798" height="391" viewBox="0 0 798 391" style={{ position: 'absolute', left: 0, top: 0 }}>
       <defs>
-        <pattern id="hero-grid" width="14" height="14" patternUnits="userSpaceOnUse">
-          <rect width="14" height="1" fill="#FFFFFF" fillOpacity="0.045" />
-          <rect width="1" height="14" fill="#FFFFFF" fillOpacity="0.045" />
-        </pattern>
+        <radialGradient id="hero-orb-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(784.6 -60) scale(550.8 357.7)">
+          <stop offset="0" stopColor="#3A2F8F" stopOpacity="0.5" />
+          <stop offset="0.7" stopColor="#3A2F8F" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="hero-orb-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-60 451) scale(504.9 306.6)">
+          <stop offset="0" stopColor="#1D6B70" stopOpacity="0.5" />
+          <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
+        </radialGradient>
+        {/* reflexo que atravessa o nome (coordenadas da fatia; o nome vai de x≈73 a x≈435) */}
+        <linearGradient id="hero-name-shine" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#F3F5F7" />
+          <stop offset="0.5" stopColor="#A8E5E8" />
+          <stop offset="1" stopColor="#F3F5F7" />
+          <animateTransform attributeName="gradientTransform" type="translate" values="-60 0; 450 0; 450 0" keyTimes="0; 0.35; 1" dur="6s" repeatCount="indefinite" />
+        </linearGradient>
       </defs>
-      <rect width="716" height="150" fill="url(#hero-grid)" />
+      <g id="hero-orbs">
+        <rect x="-60" y="-60" width="918" height="511" fill="url(#hero-orb-1)" />
+        <rect x="-60" y="-60" width="918" height="511" fill="url(#hero-orb-2)" />
+      </g>
     </svg>
-    <div style={{ boxSizing: 'border-box', minWidth: 300, padding: '16px 22px', borderRadius: 14, border: '1px solid #34303D', background: '#0A090D', display: 'flex', flexDirection: 'column', gap: 6, fontFamily: 'GeistMono', fontSize: 13, lineHeight: '17px', color: '#E9E6EE' }}>
-      <div style={{ display: 'flex', whiteSpace: 'pre' }}>
-        <span style={{ color: '#B37BFF' }}>›</span>
-        <span> deploy idea --to production</span>
+    <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: 'GeistMono', fontSize: 12, lineHeight: '16px', color: '#9BA2AE' }}>
+        <svg width="7" height="7" viewBox="0 0 7 7"><circle id="hero-live" cx="3.5" cy="3.5" r="3.5" fill="#4FB3B8" /></svg>
+        <span>Brazilian · based in Málaga, ES · remote only</span>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', whiteSpace: 'pre', color: '#A7A2B3' }}>
-        <svg width="7.8" height="16.9" viewBox="0 0 7.8 16.9"><path d="M1 9.6 3.2 11.9 7 5.6" fill="none" stroke="#B37BFF" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-        <span style={{ color: '#B37BFF' }}> shipped</span>
-        <span> · payments · fintech · AI</span>
-        <svg width="7.8" height="16.9" viewBox="0 0 7.8 16.9"><rect id="hero-cursor" width="2.925" height="16.9" fill="#B37BFF" /></svg>
+      {/* #F3F5F6: um tom fora da paleta só para o CSS trocar o preenchimento pelo reflexo */}
+      <div style={{ fontFamily: 'GeistSemiBold', fontSize: 52, lineHeight: 1.05, letterSpacing: -1.56, color: '#F3F5F6' }}>José Vieira Neto</div>
+      <div style={{ width: 686, fontSize: 19, lineHeight: 1.5, color: '#9BA2AE' }}>Senior Software Engineer | Payments & fintech | Distributed Systems | AI</div>
+    </div>
+    <div style={{ position: 'relative', height: 152, flexShrink: 0, boxSizing: 'border-box', borderRadius: 14, border: '1px solid #22262E', background: '#0E1015', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <svg width="700" height="150" viewBox="0 0 700 150" style={{ position: 'absolute', left: 0, top: 0 }}>
+        <defs>
+          <pattern id="hero-grid" width="14" height="14" patternUnits="userSpaceOnUse">
+            <rect width="14" height="1" fill="#FFFFFF" fillOpacity="0.045" />
+            <rect width="1" height="14" fill="#FFFFFF" fillOpacity="0.045" />
+          </pattern>
+        </defs>
+        <rect width="700" height="150" fill="url(#hero-grid)" />
+      </svg>
+      <div style={{ position: 'relative', boxSizing: 'border-box', minWidth: 300, padding: '16px 22px', borderRadius: 14, border: '1px solid #2C313A', background: '#07080B', display: 'flex', flexDirection: 'column', gap: 6, fontFamily: 'GeistMono', fontSize: 13, lineHeight: '17px', color: '#E6EAEE' }}>
+        <div style={{ display: 'flex', whiteSpace: 'pre' }}>
+          <span style={{ color: '#4FB3B8' }}>›</span>
+          <span> deploy idea --to production</span>
+        </div>
+        {/* linha 2: cores #9BA2AF/#4FB3B9 (um tom fora da paleta) só para o CSS animar estes paths */}
+        <div style={{ display: 'flex', alignItems: 'center', whiteSpace: 'pre', color: '#9BA2AF' }}>
+          <div style={{ width: 15.6, height: 17 }} />
+          <svg width="7.8" height="17" viewBox="0 0 7.8 17"><g id="hero-l2-check"><path d="M1 9.6 3.2 11.9 7 5.6" fill="none" stroke="#4FB3B8" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></g></svg>
+          <span style={{ color: '#4FB3B9' }}> shipped</span>
+          <span> · payments · fintech · AI</span>
+          <svg width="7.8" height="17" viewBox="0 0 7.8 17"><g id="hero-l2-cursor"><rect id="hero-cursor" width="2.925" height="17" fill="#4FB3B8" /></g></svg>
+        </div>
+        {/* digitação: retângulo da cor do terminal sobre o comando, encolhendo 1 caractere (7.8px) por passo.
+            Fica com opacity 0 fora da animação, então sem CSS/movimento o comando aparece inteiro. */}
+        <svg width="250" height="17" viewBox="0 0 250 17" style={{ position: 'absolute', left: 29.8, top: 16 }}>
+          <rect id="hero-type-cover" width="219" height="17" fill="#07080B" />
+        </svg>
       </div>
     </div>
   </div>
+  {/* feixe de luz percorrendo a borda do hero (perímetro do retângulo arredondado ≈ 2348.5) */}
+  <svg width="846" height="445" viewBox="0 0 846 445" style={{ position: 'absolute', left: 0, top: 0 }}>
+    <rect id="hero-beam-glow" x="23.5" y="24.5" width="799" height="392" rx="19.5" fill="none" stroke="#4FB3B8" strokeOpacity="0.25" strokeWidth="3" strokeLinecap="round" strokeDasharray="160 2188.5" />
+    <rect id="hero-beam" x="23.5" y="24.5" width="799" height="392" rx="19.5" fill="none" stroke="#4FB3B8" strokeOpacity="0.9" strokeWidth="1" strokeLinecap="round" strokeDasharray="0 25 110 2213.5" />
+  </svg>
 </div>
 ```
 
-```aura width=252 height=46 inline alt=""
-<div style={{ width: 252, height: 46, boxSizing: 'border-box', background: '#0C0A11', borderLeft: '1px solid #23202B' }} />
+```aura width=276 height=46 inline alt=""
+<div style={{ width: 276, height: 46, boxSizing: 'border-box', background: '#08090D', borderLeft: '1px solid #1D2027' }} />
 ```
 
-```aura width=161 height=46 link="mailto:josevieiraneto.dev@gmail.com" inline alt="Get in touch"
-<div style={{ width: 161, height: 46, background: '#0C0A11', display: 'flex', justifyContent: 'center' }}>
-  <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 46, padding: '0 20px', borderRadius: 23, border: '1px solid rgba(179, 123, 255, 0.45)', background: '#0C0A11', color: '#F5F3F7', fontFamily: 'Geist', fontSize: 15 }}>
-    <svg width="16" height="16" viewBox="0 0 24 24"><g transform="scale(0.666667)" fill="none" stroke="#B37BFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></g></svg>
+```aura width=162 height=46 link="mailto:josevieiraneto.dev@gmail.com" inline alt="Get in touch"
+<div style={{ width: 162, height: 46, background: '#08090D', display: 'flex', justifyContent: 'center' }}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 46, padding: '0 20px', borderRadius: 23, border: '1px solid rgba(79, 179, 184, 0.45)', background: '#08090D', color: '#F3F5F7', fontFamily: 'Geist', fontSize: 15 }}>
+    <svg width="16" height="16" viewBox="0 0 24 24"><g transform="scale(0.666667)" fill="none" stroke="#4FB3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></g></svg>
     <span>Get in touch</span>
   </div>
 </div>
 ```
 
-```aura width=135 height=46 link="https://linkedin.com/in/josevieiraneto" inline alt="LinkedIn"
-<div style={{ width: 135, height: 46, background: '#0C0A11', display: 'flex', justifyContent: 'center' }}>
-  <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 46, padding: '0 20px', borderRadius: 23, border: '1px solid #3A3644', background: '#0C0A11', color: '#F5F3F7', fontFamily: 'Geist', fontSize: 15 }}>
-    <svg width="16" height="16" viewBox="0 0 24 24"><g transform="scale(0.666667)" fill="none" stroke="#F5F3F7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></g></svg>
+```aura width=134 height=46 link="https://linkedin.com/in/josevieiraneto" inline alt="LinkedIn"
+<div style={{ width: 134, height: 46, background: '#08090D', display: 'flex', justifyContent: 'center' }}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 46, padding: '0 20px', borderRadius: 23, border: '1px solid #323843', background: '#08090D', color: '#F3F5F7', fontFamily: 'Geist', fontSize: 15 }}>
+    <svg width="16" height="16" viewBox="0 0 24 24"><g transform="scale(0.666667)" fill="none" stroke="#F3F5F7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></g></svg>
     <span>LinkedIn</span>
   </div>
 </div>
 ```
 
-```aura width=252 height=46 inline alt=""
-<div style={{ width: 252, height: 46, boxSizing: 'border-box', background: '#0C0A11', borderRight: '1px solid #23202B' }} />
+```aura width=276 height=46 inline alt=""
+<div style={{ width: 276, height: 46, boxSizing: 'border-box', background: '#08090D', borderRight: '1px solid #1D2027' }} />
 ```
 
-```aura width=800 height=978 inline alt="Focus areas: Payments & Fintech (PIX, card settlement, Open Finance). Distributed Systems (microservices, event-driven architecture). Product & AI (end-to-end ownership, LLM features, AI Tools). About: Building products end to end, from design to production. 8 years as a software engineer across fintech, banking and integration platforms. In payments and core banking, I've built instant payments (PIX), card settlement, Open Finance and high-volume transaction systems. I care about why we're building something, not just how, I work close to product and business and like owning the whole thing. Today I work fully remote for a Brazilian company and ship my own products, from Java and Spring Boot services to Next.js frontends and LLM-powered features. Stack: Java, Kotlin, Spring Boot, Kafka, AWS, Docker, PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch, Grafana, Next.js, React, TypeScript, Tailwind, Datadog, Claude."
+```aura width=848 height=944 inline alt="Focus areas: Payments & Fintech (PIX, card settlement, Open Finance). Distributed Systems (microservices, event-driven architecture). Product & AI (end-to-end ownership, LLM features, AI Tools). About: Building products end to end, from design to production. 8 years as a software engineer across fintech, banking and integration platforms. In payments and core banking, I've built instant payments (PIX), card settlement, Open Finance and high-volume transaction systems. I care about why we're building something, not just how, I work close to product and business and like owning the whole thing. Today I work fully remote for a Brazilian company and ship my own products, from Java and Spring Boot services to Next.js frontends and LLM-powered features. Stack: Java, Kotlin, Spring Boot, Kafka, AWS, Docker, PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch, Grafana, Next.js, React, TypeScript, Tailwind, Datadog, Claude."
 (() => {
   const stack = [
     // simple-icons: openjdk
@@ -123,123 +185,210 @@
     // simple-icons: anthropic
     ["Claude", "M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"],
   ];
-  const card = { boxSizing: 'border-box', borderRadius: 16, border: '1px solid #2A2732', background: '#0C0A11', color: '#F5F3F7' };
+  const floatDelays = stack.map((_, i) => `#stack-icon-${i} { animation-delay: ${((i % 6) * 0.35 + Math.floor(i / 6) * 0.2).toFixed(2)}s }`).join('\n');
+  // entrada em cascata (uma vez, ao carregar): tampa da cor do fundo some + ícone sobe
+  const entryDelays = stack.map((_, i) => `#stack-cover-${i}, #stack-rise-${i} { animation-delay: ${(0.3 + i * 0.07).toFixed(2)}s }`).join('\n');
+  const card = { boxSizing: 'border-box', borderRadius: 16, border: '1px solid #22262E', background: '#08090D', color: '#F3F5F7' };
   return (
-    <div style={{ width: 800, height: 978, boxSizing: 'border-box', background: '#0C0A11', borderLeft: '1px solid #23202B', borderRight: '1px solid #23202B', padding: '28px 40px 0', display: 'flex', flexDirection: 'column', gap: 28, fontFamily: 'Geist' }}>
-      <div style={{ display: 'flex', gap: 16 }}>
+    <div style={{ position: 'relative', width: 848, height: 944, boxSizing: 'border-box', background: '#08090D', borderLeft: '1px solid #1D2027', borderRight: '1px solid #1D2027', padding: '28px 23px 0', display: 'flex', flexDirection: 'column', gap: 28, fontFamily: 'Geist' }}>
+      <style>{`
+        @keyframes glow { 0%, 100% { opacity: .55 } 50% { opacity: 1 } }
+        @keyframes float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-4px) } }
+        #focus-icon-0, #focus-icon-1, #focus-icon-2 { animation: glow 3s ease-in-out infinite }
+        #focus-icon-1 { animation-delay: 1s }
+        #focus-icon-2 { animation-delay: 2s }
+        ${stack.map((_, i) => `#stack-icon-${i}`).join(', ')} { animation: float 4s ease-in-out infinite }
+        ${floatDelays}
+        @keyframes reveal { from { opacity: 1 } to { opacity: 0 } }
+        @keyframes rise { from { transform: translateY(8px) } to { transform: translateY(0) } }
+        ${stack.map((_, i) => `#stack-cover-${i}`).join(', ')} { opacity: 0; animation: reveal .5s ease-out both }
+        ${stack.map((_, i) => `#stack-rise-${i}`).join(', ')} { animation: rise .6s ease-out both }
+        ${entryDelays}
+        @media (prefers-reduced-motion: reduce) { * { animation: none !important } }
+      `}</style>
+      <svg width="846" height="944" viewBox="0 0 846 944" style={{ position: 'absolute', left: 0, top: 0 }}>
+        <defs>
+          <radialGradient id="cv-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 -491) scale(507.6 406.1)">
+            <stop offset="0" stopColor="#3A2F8F" stopOpacity="0.35" />
+            <stop offset="0.7" stopColor="#3A2F8F" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="cv-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 339.7) scale(465.3 332.3)">
+            <stop offset="0" stopColor="#1D6B70" stopOpacity="0.22" />
+            <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="cv-3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 1355) scale(507.6 369.2)">
+            <stop offset="0" stopColor="#1D6B70" stopOpacity="0.28" />
+            <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <rect width="846" height="944" fill="url(#cv-1)" />
+        <rect width="846" height="944" fill="url(#cv-2)" />
+        <rect width="846" height="944" fill="url(#cv-3)" />
+      </svg>
+      <div style={{ position: 'relative', display: 'flex', gap: 16 }}>
         <div style={{ ...card, flex: 1, height: 150, padding: 24, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-          <svg width="26" height="26" viewBox="0 0 24 24"><g transform="scale(1.083333)" fill="none" stroke="#B37BFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="5" width="20" height="14" rx="2" /><path d="M2 10h20" /><path d="M6 15h4" /></g></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24"><g id="focus-icon-0"><g transform="scale(1.083333)" fill="none" stroke="#4FB3B8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="5" width="20" height="14" rx="2" /><path d="M2 10h20" /><path d="M6 15h4" /></g></g></svg>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
             <span style={{ fontFamily: 'GeistSemiBold', fontSize: 17, lineHeight: '22px' }}>Payments & Fintech</span>
-            <div style={{ display: 'flex', flexDirection: 'column', fontSize: 13, lineHeight: '17px', color: '#A7A2B3' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', fontSize: 13, lineHeight: '17px', color: '#9BA2AE' }}>
               <span>PIX · card settlement · </span>
               <span>Open Finance</span>
             </div>
           </div>
         </div>
         <div style={{ ...card, flex: 1, height: 150, padding: 24, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-          <svg width="26" height="26" viewBox="0 0 24 24"><g transform="scale(1.083333)" fill="none" stroke="#B37BFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="2" width="6" height="6" rx="1" /><rect x="2" y="16" width="6" height="6" rx="1" /><rect x="16" y="16" width="6" height="6" rx="1" /><path d="M12 8v4M5 16v-2h14v2" /></g></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24"><g id="focus-icon-1"><g transform="scale(1.083333)" fill="none" stroke="#4FB3B8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="2" width="6" height="6" rx="1" /><rect x="2" y="16" width="6" height="6" rx="1" /><rect x="16" y="16" width="6" height="6" rx="1" /><path d="M12 8v4M5 16v-2h14v2" /></g></g></svg>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
             <span style={{ fontFamily: 'GeistSemiBold', fontSize: 17, lineHeight: '22px' }}>Distributed Systems</span>
-            <span style={{ fontSize: 13, lineHeight: '17px', color: '#A7A2B3' }}>microservices · event-driven architecture</span>
+            <span style={{ fontSize: 13, lineHeight: '17px', color: '#9BA2AE' }}>microservices · event-driven architecture</span>
           </div>
         </div>
         <div style={{ ...card, flex: 1, height: 150, padding: 24, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-          <svg width="26" height="26" viewBox="0 0 24 24"><g transform="scale(1.083333)" fill="none" stroke="#B37BFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z" /><path d="M19 17v4M17 19h4" /></g></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24"><g id="focus-icon-2"><g transform="scale(1.083333)" fill="none" stroke="#4FB3B8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z" /><path d="M19 17v4M17 19h4" /></g></g></svg>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
             <span style={{ fontFamily: 'GeistSemiBold', fontSize: 17, lineHeight: '22px' }}>Product & AI</span>
-            <div style={{ display: 'flex', flexDirection: 'column', fontSize: 13, lineHeight: '17px', color: '#A7A2B3' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', fontSize: 13, lineHeight: '17px', color: '#9BA2AE' }}>
               <span>end-to-end ownership · </span>
-              <span>{'LLM features\u00a0 · AI Tools'}</span>
+              <span>{'LLM features  · AI Tools'}</span>
             </div>
           </div>
         </div>
       </div>
-      <div style={{ ...card, padding: '32px 36px', display: 'flex', flexDirection: 'column', gap: 14 }}>
-        <span style={{ fontFamily: 'GeistMono', fontSize: 12, lineHeight: '16px', letterSpacing: 3.6, color: '#B37BFF' }}>ABOUT</span>
-        <div style={{ fontFamily: 'GeistSemiBold', fontSize: 26, lineHeight: 1.25, letterSpacing: -0.52 }}>Building products end to end, from design to production</div>
-        <div style={{ fontSize: 15, lineHeight: 1.7, color: '#A7A2B3' }}>8 years as a software engineer across fintech, banking and integration platforms. In payments and core banking, I've built instant payments (PIX), card settlement, Open Finance and high-volume transaction systems. I care about why we're building something, not just how, I work close to product and business and like owning the whole thing. Today I work fully remote for a Brazilian company and ship my own products, from Java and Spring Boot services to Next.js frontends and LLM-powered features.</div>
+      <div style={{ ...card, position: 'relative', height: 270, flexShrink: 0, overflow: 'hidden', padding: '32px 36px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <svg width="798" height="268" viewBox="0 0 798 268" style={{ position: 'absolute', left: 0, top: 0 }}>
+          <defs>
+            <radialGradient id="about-orb-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 268) scale(359.1 214.4)">
+              <stop offset="0" stopColor="#1D6B70" stopOpacity="0.35" />
+              <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
+            </radialGradient>
+            <radialGradient id="about-orb-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(798 0) scale(359.1 214.4)">
+              <stop offset="0" stopColor="#3A2F8F" stopOpacity="0.3" />
+              <stop offset="0.7" stopColor="#3A2F8F" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="798" height="268" fill="url(#about-orb-1)" />
+          <rect width="798" height="268" fill="url(#about-orb-2)" />
+        </svg>
+        <span style={{ position: 'relative', fontFamily: 'GeistMono', fontSize: 12, lineHeight: '16px', letterSpacing: 3.6, color: '#7B8CF2' }}>ABOUT</span>
+        <div style={{ position: 'relative', fontFamily: 'GeistSemiBold', fontSize: 26, lineHeight: 1.25, letterSpacing: -0.52 }}>Building products end to end, from design to production</div>
+        <div style={{ position: 'relative', fontSize: 15, lineHeight: 1.7, color: '#9BA2AE' }}>8 years as a software engineer across fintech, banking and integration platforms. In payments and core banking, I've built instant payments (PIX), card settlement, Open Finance and high-volume transaction systems. I care about why we're building something, not just how, I work close to product and business and like owning the whole thing. Today I work fully remote for a Brazilian company and ship my own products, from Java and Spring Boot services to Next.js frontends and LLM-powered features.</div>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-        <span style={{ fontFamily: 'GeistSemiBold', fontSize: 26, lineHeight: '34px', letterSpacing: -0.52, color: '#F5F3F7' }}>Stack</span>
+      <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 18 }}>
+        <span style={{ fontFamily: 'GeistSemiBold', fontSize: 26, lineHeight: '34px', letterSpacing: -0.52, color: '#F3F5F7' }}>Stack</span>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
           {stack.map(([name, path], i) => (
-            <div style={{ position: 'relative', width: 109.66, height: 112, boxSizing: 'border-box', borderRadius: 14, border: '1px solid #24212C', background: '#141219', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
-              <svg width="107.66" height="110" viewBox="0 0 107.66 110" style={{ position: 'absolute', left: 0, top: 0 }}>
+            <div style={{ position: 'relative', width: 123.33, height: 112, boxSizing: 'border-box', borderRadius: 14, border: '1px solid #1F232A', background: '#11141A', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+              <svg width="121.33" height="110" viewBox="0 0 121.33 110" style={{ position: 'absolute', left: 0, top: 0 }}>
                 <defs>
                   <pattern id={`stack-dots-${i}`} width="18" height="18" patternUnits="userSpaceOnUse">
                     <circle cx="9" cy="9" r="1.25" fill="#FFFFFF" fillOpacity="0.08" />
                   </pattern>
                 </defs>
-                <rect width="107.66" height="110" fill={`url(#stack-dots-${i})`} />
+                <rect width="121.33" height="110" fill={`url(#stack-dots-${i})`} />
               </svg>
-              <svg width="30" height="30" viewBox="0 0 24 24"><g transform="scale(1.25)"><path d={path} fill="#B37BFF" /></g></svg>
-              <span style={{ fontFamily: 'GeistMono', fontSize: 11, lineHeight: '14px', color: '#C9C4D3' }}>{name}</span>
+              {/* 8px a mais em cima e embaixo para o "float" (-4px) e o "rise" (+8px) não serem cortados pelo viewport do SVG */}
+              <svg width="30" height="46" viewBox="0 0 30 46" style={{ marginTop: -8, marginBottom: -8 }}><g transform="translate(0 8)"><g id={`stack-rise-${i}`}><g id={`stack-icon-${i}`}><g transform="scale(1.25)"><path d={path} fill="#4FB3B8" /></g></g></g></g></svg>
+              <span style={{ fontFamily: 'GeistMono', fontSize: 11, lineHeight: '14px', color: '#C4CAD3' }}>{name}</span>
             </div>
           ))}
         </div>
+        {/* tampas da entrada em cascata, uma por tile (opacity 0 fora da animação) */}
+        <svg width="800" height="360" viewBox="0 0 800 360" style={{ position: 'absolute', left: 0, top: 52 }}>
+          {stack.map((_, i) => <rect id={`stack-cover-${i}`} x={(i % 6) * 135.33 - 0.5} y={Math.floor(i / 6) * 124 - 0.5} width="124.33" height="113" rx="14" fill="#08090D" />)}
+        </svg>
       </div>
     </div>
   );
 })()
 ```
 
-```aura width=800 height=369 inline alt="Now building · SaaS: Stackround. AI-powered technical interview simulator for tech professionals preparing for interviews in English. Audio questions with natural accents, real-time answers, and feedback on technical depth, communication and English. Built with Java 21, Spring Boot, Spring AI, Spring Security, Auth0, Claude, ElevenLabs, OpenAI Whisper, Paddle, Next.js 16, React 19, TypeScript, PostgreSQL."
-<div style={{ width: 800, height: 369, boxSizing: 'border-box', background: '#0C0A11', borderLeft: '1px solid #23202B', borderRight: '1px solid #23202B', padding: '28px 40px 0', display: 'flex', alignItems: 'flex-start', fontFamily: 'Geist' }}>
+```aura width=848 height=354 inline alt="Now building · SaaS: Stackround. AI-powered technical interview simulator for tech professionals preparing for interviews in English. Audio questions with natural accents, real-time answers, and feedback on technical depth, communication and English. Built with Java 21, Spring Boot, Spring AI, Spring Security, Auth0, Claude, ElevenLabs, OpenAI Whisper, Paddle, Next.js 16, React 19, TypeScript, PostgreSQL."
+<div style={{ position: 'relative', width: 848, height: 354, boxSizing: 'border-box', background: '#08090D', borderLeft: '1px solid #1D2027', borderRight: '1px solid #1D2027', padding: '0 23px', display: 'flex', alignItems: 'flex-start', fontFamily: 'Geist' }}>
   <style>{`
     @keyframes pulse { 0%, 100% { opacity: 1 } 50% { opacity: .35 } }
+    @keyframes drift2 { 0%, 100% { transform: translate(0, 0) scale(1) } 50% { transform: translate(26px, -14px) scale(1.08) } }
+    @keyframes eq { 0%, 100% { transform: scaleY(.35) } 50% { transform: scaleY(1) } }
+    #nb-orbs { transform-box: fill-box; transform-origin: center; animation: drift2 18s ease-in-out infinite }
     #nb-live { animation: pulse 2s ease-in-out infinite }
+    #nb-eq-0, #nb-eq-1, #nb-eq-2, #nb-eq-3, #nb-eq-4, #nb-eq-5 { transform-box: fill-box; transform-origin: 50% 100%; animation: eq 1.1s ease-in-out infinite }
+    #nb-eq-1 { animation-delay: .25s }
+    #nb-eq-2 { animation-delay: .5s }
+    #nb-eq-3 { animation-delay: .15s }
+    #nb-eq-4 { animation-delay: .4s }
+    #nb-eq-5 { animation-delay: .65s }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important } }
   `}</style>
-  <div style={{ position: 'relative', width: 718, boxSizing: 'border-box', borderRadius: 20, border: '1px solid #23202B', background: '#0C0A11', overflow: 'hidden', padding: 28, display: 'flex', gap: 20, alignItems: 'center', color: '#F5F3F7' }}>
-    <svg width="716" height="600" viewBox="0 0 716 600" style={{ position: 'absolute', left: 0, top: 0 }}>
+  <svg width="846" height="354" viewBox="0 0 846 354" style={{ position: 'absolute', left: 0, top: 0 }}>
+    <defs>
+      <radialGradient id="cv-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 -1435) scale(507.6 406.1)">
+        <stop offset="0" stopColor="#3A2F8F" stopOpacity="0.35" />
+        <stop offset="0.7" stopColor="#3A2F8F" stopOpacity="0" />
+      </radialGradient>
+      <radialGradient id="cv-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 -604.3) scale(465.3 332.3)">
+        <stop offset="0" stopColor="#1D6B70" stopOpacity="0.22" />
+        <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
+      </radialGradient>
+      <radialGradient id="cv-3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 411) scale(507.6 369.2)">
+        <stop offset="0" stopColor="#1D6B70" stopOpacity="0.28" />
+        <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+    <rect width="846" height="354" fill="url(#cv-1)" />
+    <rect width="846" height="354" fill="url(#cv-2)" />
+    <rect width="846" height="354" fill="url(#cv-3)" />
+  </svg>
+  <div style={{ position: 'relative', width: 800, height: 326, flexShrink: 0, boxSizing: 'border-box', borderRadius: 20, border: '1px solid #1D2027', background: '#08090D', overflow: 'hidden', padding: 32, display: 'flex', gap: 28, alignItems: 'center', color: '#F3F5F7' }}>
+    <svg width="798" height="324" viewBox="0 0 798 324" style={{ position: 'absolute', left: 0, top: 0 }}>
       <defs>
-        <radialGradient id="nb-haze-g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(576 20) scale(367.7 254.6)">
-          <stop offset="0" stopColor="#7A34A8" stopOpacity="0.3" />
-          <stop offset="0.7" stopColor="#7A34A8" stopOpacity="0" />
+        <radialGradient id="nb-orb-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(848 -50) scale(449 339.2)">
+          <stop offset="0" stopColor="#3A2F8F" stopOpacity="0.4" />
+          <stop offset="0.7" stopColor="#3A2F8F" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="nb-orb-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(84.7 416.4) scale(404.1 296.8)">
+          <stop offset="0" stopColor="#1D6B70" stopOpacity="0.4" />
+          <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <rect width="716" height="600" fill="url(#nb-haze-g)" />
+      <g id="nb-orbs">
+        <rect x="-50" y="-50" width="898" height="424" fill="url(#nb-orb-1)" />
+        <rect x="-50" y="-50" width="898" height="424" fill="url(#nb-orb-2)" />
+      </g>
     </svg>
     <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', gap: 14 }}>
-      <div style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 8, padding: '5px 12px', borderRadius: 999, border: '1px solid #3A3644', fontFamily: 'GeistMono', fontSize: 11, lineHeight: '14px', color: '#C9C4D3' }}>
-        <svg width="7" height="7" viewBox="0 0 7 7"><circle id="nb-live" cx="3.5" cy="3.5" r="3.5" fill="#B37BFF" /></svg>
+      <div style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 8, padding: '5px 12px', borderRadius: 999, border: '1px solid #323843', fontFamily: 'GeistMono', fontSize: 11, lineHeight: '14px', color: '#C4CAD3' }}>
+        <svg width="7" height="7" viewBox="0 0 7 7"><circle id="nb-live" cx="3.5" cy="3.5" r="3.5" fill="#4FB3B8" /></svg>
         <span>now building · SaaS</span>
       </div>
       <div style={{ fontFamily: 'GeistSemiBold', fontSize: 38, lineHeight: 1, letterSpacing: -1.14 }}>Stackround</div>
-      <div style={{ fontSize: 15, lineHeight: 1.6, color: '#A7A2B3' }}>AI-powered technical interview simulator for tech professionals preparing for interviews in English. Audio questions with natural accents, real-time answers, and feedback on technical depth, communication and English.</div>
-      <div style={{ display: 'flex', flexDirection: 'column', fontFamily: 'GeistMono', fontSize: 12, lineHeight: 1.6, color: '#8E899A' }}>
+      <div style={{ fontSize: 15, lineHeight: 1.6, color: '#9BA2AE' }}>AI-powered technical interview simulator for tech professionals preparing for interviews in English. Audio questions with natural accents, real-time answers, and feedback on technical depth, communication and English.</div>
+      <div style={{ display: 'flex', flexDirection: 'column', fontFamily: 'GeistMono', fontSize: 12, lineHeight: 1.6, color: '#858C98' }}>
         <span>Java 21 · Spring Boot · Spring AI · Spring Security </span>
         <span>Auth0 · Claude · ElevenLabs · OpenAI Whisper · Paddle</span>
         <span>Next.js 16 · React 19 · TypeScript · PostgreSQL</span>
       </div>
     </div>
-    <div style={{ position: 'relative', width: 256, height: 210, flexShrink: 0, boxSizing: 'border-box', borderRadius: 14, border: '1px solid #2A2732', background: '#121016', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 12 }}>
-      <svg width="254" height="208" viewBox="0 0 254 208" style={{ position: 'absolute', left: 0, top: 0 }}>
+    <div style={{ position: 'relative', width: 290, height: 210, flexShrink: 0, boxSizing: 'border-box', borderRadius: 14, border: '1px solid #22262E', background: '#0E1015', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
+      <svg width="288" height="208" viewBox="0 0 288 208" style={{ position: 'absolute', left: 0, top: 0 }}>
         <defs>
           <pattern id="nb-grid" width="14" height="14" patternUnits="userSpaceOnUse">
             <rect width="14" height="1" fill="#FFFFFF" fillOpacity="0.045" />
             <rect width="1" height="14" fill="#FFFFFF" fillOpacity="0.045" />
           </pattern>
         </defs>
-        <rect width="254" height="208" fill="url(#nb-grid)" />
+        <rect width="288" height="208" fill="url(#nb-grid)" />
       </svg>
-      <div style={{ width: '100%', boxSizing: 'border-box', padding: 16, borderRadius: 12, border: '1px solid #34303D', background: '#0A090D', display: 'flex', flexDirection: 'column', gap: 10, fontSize: 13, lineHeight: 1.5 }}>
+      <div style={{ width: '100%', boxSizing: 'border-box', padding: 16, borderRadius: 12, border: '1px solid #2C313A', background: '#07080B', display: 'flex', flexDirection: 'column', gap: 10, fontSize: 13, lineHeight: 1.5 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ display: 'flex', alignItems: 'flex-end', gap: 3, height: 16 }}>
-            <div style={{ width: 3, height: 7, borderRadius: 2, background: '#B37BFF' }} />
-            <div style={{ width: 3, height: 14, borderRadius: 2, background: '#B37BFF' }} />
-            <div style={{ width: 3, height: 10, borderRadius: 2, background: '#B37BFF' }} />
-            <div style={{ width: 3, height: 16, borderRadius: 2, background: '#B37BFF' }} />
-            <div style={{ width: 3, height: 6, borderRadius: 2, background: '#B37BFF' }} />
-            <div style={{ width: 3, height: 12, borderRadius: 2, background: '#B37BFF' }} />
-          </div>
-          <span style={{ fontFamily: 'GeistMono', fontSize: 11, color: '#A7A2B3' }}>interviewer · audio</span>
+          <svg width="33" height="16" viewBox="0 0 33 16">
+            {[0, 1, 2, 3, 4, 5].map((j) => <rect id={`nb-eq-${j}`} x={j * 6} width="3" height="16" rx="1.5" fill="#4FB3B8" />)}
+          </svg>
+          <span style={{ fontFamily: 'GeistMono', fontSize: 11, color: '#9BA2AE' }}>interviewer · audio</span>
         </div>
-        <span style={{ color: '#F5F3F7' }}>"How would you make a payment API idempotent?"</span>
+        <span style={{ color: '#F3F5F7' }}>"How would you make a payment API idempotent?"</span>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, fontFamily: 'GeistMono', fontSize: 11 }}>
-          <span style={{ padding: '3px 8px', borderRadius: 999, border: '1px solid #3A3644', color: '#C9C4D3' }}>depth</span>
-          <span style={{ padding: '3px 8px', borderRadius: 999, border: '1px solid #3A3644', color: '#C9C4D3' }}>clarity</span>
-          <span style={{ padding: '3px 8px', borderRadius: 999, border: '1px solid #3A3644', color: '#C9C4D3' }}>English</span>
+          <span style={{ padding: '3px 8px', borderRadius: 999, border: '1px solid #323843', color: '#C4CAD3' }}>depth</span>
+          <span style={{ padding: '3px 8px', borderRadius: 999, border: '1px solid #323843', color: '#C4CAD3' }}>clarity</span>
+          <span style={{ padding: '3px 8px', borderRadius: 999, border: '1px solid #323843', color: '#C4CAD3' }}>English</span>
         </div>
       </div>
     </div>
@@ -247,9 +396,28 @@
 </div>
 ```
 
-```aura width=800 height=94 inline alt="Always happy to talk about business & technology. Málaga, ES · UTC+1."
-<div style={{ width: 800, height: 94, boxSizing: 'border-box', background: '#0C0A11', borderLeft: '1px solid #23202B', borderRight: '1px solid #23202B', borderBottom: '1px solid #23202B', borderBottomLeftRadius: 20, borderBottomRightRadius: 20, padding: '28px 40px 32px', display: 'flex', fontFamily: 'GeistMono', fontSize: 12, lineHeight: '16px', color: '#8E899A' }}>
-  <div style={{ width: 718, display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16, borderTop: '1px solid #23202B' }}>
+```aura width=848 height=58 inline alt="Always happy to talk about business & technology. Málaga, ES · UTC+1."
+<div style={{ position: 'relative', width: 848, height: 58, boxSizing: 'border-box', background: '#08090D', borderLeft: '1px solid #1D2027', borderRight: '1px solid #1D2027', borderBottom: '1px solid #1D2027', borderBottomLeftRadius: 24, borderBottomRightRadius: 24, overflow: 'hidden', padding: '0 23px 24px', display: 'flex', fontFamily: 'GeistMono', fontSize: 12, lineHeight: '16px', color: '#858C98' }}>
+  <svg width="846" height="57" viewBox="0 0 846 57" style={{ position: 'absolute', left: 0, top: 0 }}>
+    <defs>
+      <radialGradient id="cv-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 -1789) scale(507.6 406.1)">
+        <stop offset="0" stopColor="#3A2F8F" stopOpacity="0.35" />
+        <stop offset="0.7" stopColor="#3A2F8F" stopOpacity="0" />
+      </radialGradient>
+      <radialGradient id="cv-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 -958.3) scale(465.3 332.3)">
+        <stop offset="0" stopColor="#1D6B70" stopOpacity="0.22" />
+        <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
+      </radialGradient>
+      <radialGradient id="cv-3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 57) scale(507.6 369.2)">
+        <stop offset="0" stopColor="#1D6B70" stopOpacity="0.28" />
+        <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+    <rect width="846" height="57" fill="url(#cv-1)" />
+    <rect width="846" height="57" fill="url(#cv-2)" />
+    <rect width="846" height="57" fill="url(#cv-3)" />
+  </svg>
+  <div style={{ position: 'relative', width: 800, display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16, borderTop: '1px solid #22262E' }}>
     <span>Always happy to talk about business & technology</span>
     <span>Málaga, ES · UTC+1</span>
   </div>
@@ -258,19 +426,19 @@
 
 <!-- Botões Website e Stackround: desativados até o deploy. Para reativar: preencha o link=,
      troque `disabled-aura` por `aura`, mova-os para entre o LinkedIn e o preenchimento da direita
-     e reduza a largura dos dois preenchimentos para que a linha continue somando 800px.
-```disabled-aura width=132 height=46 link="[URL_DO_SITE]" inline alt="Website"
-<div style={{ width: 132, height: 46, background: '#0C0A11', display: 'flex', justifyContent: 'center' }}>
-  <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 46, padding: '0 20px', borderRadius: 23, border: '1px solid #3A3644', background: '#0C0A11', color: '#F5F3F7', fontFamily: 'Geist', fontSize: 15 }}>
-    <svg width="16" height="16" viewBox="0 0 24 24"><g transform="scale(0.666667)" fill="none" stroke="#F5F3F7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z" /></g></svg>
+     e reduza a largura dos dois preenchimentos para que a linha continue somando 848px.
+```disabled-aura width=142 height=46 link="[URL_DO_SITE]" inline alt="Website"
+<div style={{ width: 142, height: 46, background: '#08090D', display: 'flex', justifyContent: 'center' }}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 46, padding: '0 20px', borderRadius: 23, border: '1px solid #323843', background: '#08090D', color: '#F3F5F7', fontFamily: 'Geist', fontSize: 15 }}>
+    <svg width="16" height="16" viewBox="0 0 24 24"><g transform="scale(0.666667)" fill="none" stroke="#F3F5F7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z" /></g></svg>
     <span>Website</span>
   </div>
 </div>
 ```
-```disabled-aura width=156 height=46 link="[URL_DO_STACKROUND]" inline alt="Stackround"
-<div style={{ width: 156, height: 46, background: '#0C0A11', display: 'flex', justifyContent: 'center' }}>
-  <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 46, padding: '0 20px', borderRadius: 23, border: '1px solid #3A3644', background: '#0C0A11', color: '#F5F3F7', fontFamily: 'Geist', fontSize: 15 }}>
-    <svg width="16" height="16" viewBox="0 0 24 24"><g transform="scale(0.666667)" fill="none" stroke="#B37BFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z" /></g></svg>
+```disabled-aura width=155 height=46 link="[URL_DO_STACKROUND]" inline alt="Stackround"
+<div style={{ width: 155, height: 46, background: '#08090D', display: 'flex', justifyContent: 'center' }}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 46, padding: '0 20px', borderRadius: 23, border: '1px solid #323843', background: '#08090D', color: '#F3F5F7', fontFamily: 'Geist', fontSize: 15 }}>
+    <svg width="16" height="16" viewBox="0 0 24 24"><g transform="scale(0.666667)" fill="none" stroke="#4FB3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z" /></g></svg>
     <span>Stackround</span>
   </div>
 </div>

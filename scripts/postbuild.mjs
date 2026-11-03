@@ -3,10 +3,13 @@
 // 1. Imagens: todas as fatias são blocos `inline`, e o readme-aura as junta numa única
 //    linha HTML. Aqui cada <img> recebe:
 //    - o `alt="..."` declarado no bloco ```aura do source (o readme-aura não gera alt);
-//    - largura em % de 800px e nenhuma altura, para escalar junto com o container;
+//    - largura em % do canvas (a largura da primeira fatia) e nenhuma altura, para escalar
+//      junto com o container;
 //    - align="top", que elimina a fresta da linha de base entre as linhas de imagens.
 //    A última peça de cada linha com várias peças perde 0.05% para a soma nunca passar
-//    de 100% por arredondamento (o que jogaria a peça para a linha de baixo).
+//    de 100% por arredondamento (o que jogaria a peça para a linha de baixo). Para ela não
+//    ficar mais baixa que as vizinhas (1px de fresta), o SVG dela é esticado na vertical na
+//    mesma proporção (preserveAspectRatio="none"; a peça é sempre um preenchimento liso).
 //
 // 2. SVGs aninhados: readme-aura transforma cada <svg> do JSX em
 //    <svg x y width height clip-path mask>, mas clip-path/mask num <svg> com x/y
@@ -20,7 +23,6 @@ import { join } from 'node:path';
 const source = process.argv[2] ?? 'readme.source.md';
 const output = process.argv[3] ?? 'README.md';
 const assetsDir = process.argv[4] ?? '.github/assets';
-const CANVAS = 800;
 
 const alts = [...readFileSync(source, 'utf8').matchAll(/^```aura\b(.*)$/gm)].map(
   ([, meta]) => meta.match(/\balt="([^"]*)"/)?.[1] ?? null,
@@ -33,13 +35,17 @@ let readme = readFileSync(output, 'utf8');
 const imgRe = /<img src="([^"]*readme-aura-component-(\d+)-\w+\.svg)" width="(\d+)" height="\d+" \/>/g;
 const images = [...readme.matchAll(imgRe)].map(([tag, src, i, width]) => ({ tag, src, i, width: +width }));
 
+const CANVAS = images[0]?.width ?? 848;
 let rowWidth = 0;
 let rowStart = 0;
 images.forEach((img, n) => {
   rowWidth += img.width;
   img.pct = (img.width / CANVAS) * 100;
   if (rowWidth >= CANVAS) {
-    if (n > rowStart) img.pct -= 0.05;
+    if (n > rowStart) {
+      img.stretch = img.pct / (img.pct - 0.05);
+      img.pct -= 0.05;
+    }
     rowWidth = 0;
     rowStart = n + 1;
   }
@@ -57,10 +63,19 @@ for (const { tag, src, i, pct } of images) {
 
 writeFileSync(output, readme);
 
+const stretched = new Map(images.filter((img) => img.stretch).map((img) => [img.src.split('/').pop(), img.stretch]));
+
 for (const name of readdirSync(assetsDir)) {
   if (!/^readme-aura-component-\d+-\w+\.svg$/.test(name)) continue;
   const path = join(assetsDir, name);
-  const svg = readFileSync(path, 'utf8').replace(
+  let svg = readFileSync(path, 'utf8');
+  if (stretched.has(name)) {
+    svg = svg.replace(
+      /<svg width="([\d.]+)" height="[\d.]+" viewBox="0 0 [\d.]+ ([\d.]+)"(?: preserveAspectRatio="none")?/,
+      (_, w, h) => `<svg width="${w}" height="${+(h * stretched.get(name)).toFixed(4)}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"`,
+    );
+  }
+  svg = svg.replace(
     /<svg (x="[^"]*" y="[^"]*"[^>]*?) clip-path="([^"]*)" mask="([^"]*)">([\s\S]*?)<\/svg>/g,
     (_, attrs, clip, mask, body) => `<g clip-path="${clip}" mask="${mask}"><svg ${attrs}>${body}</svg></g>`,
   );
