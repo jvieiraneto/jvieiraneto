@@ -1,74 +1,63 @@
 <!--
   O README é um único canvas de 848px (moldura #08090D com orbs em gradiente) fatiado em
   imagens inline. O scripts/postbuild.mjs converte cada <img> para largura em % + align="top",
-  para que as fatias se empilhem sem frestas. Toda fatia tem 848px de largura; as peças da
-  linha de botões somam 848px.
+  para que as fatias se empilhem sem frestas. Toda fatia tem 848px de largura.
 
-  Os gradientes da moldura são desenhados em coordenadas do canvas inteiro (846×1846, a área
+  Os gradientes da moldura são desenhados em coordenadas do canvas inteiro (846×1134, a área
   interna à borda); cada fatia desloca o mesmo SVG pelo seu topo (translate y negativo).
-  Topos das fatias: 0 · 445 · 491 · 1435 · 1789. A linha de botões fica fora do alcance
-  dos três gradientes, por isso é só #08090D.
+  Topos das fatias: 0 · 463.
 -->
 
-```aura width=848 height=446 inline alt="José Vieira Neto. Brazilian, based in Málaga, ES, remote only. Senior Software Engineer | Payments & fintech | Distributed Systems | AI. Terminal: deploy idea --to production, shipped: payments, fintech, AI."
-<div style={{ position: 'relative', width: 848, height: 446, boxSizing: 'border-box', background: '#08090D', borderTop: '1px solid #1D2027', borderLeft: '1px solid #1D2027', borderRight: '1px solid #1D2027', borderTopLeftRadius: 24, borderTopRightRadius: 24, overflow: 'hidden', padding: '24px 23px 0', display: 'flex', flexDirection: 'column', fontFamily: 'Geist' }}>
+```aura width=848 height=464 inline alt="José Vieira Neto. Brazilian, based in Málaga, ES, remote only. Senior Software Engineer building scalable systems and AI-powered products. Terminal: design, system design, APIs, data models. Build, Java, Spring Boot, event-driven. Ship, AWS, CI/CD, observability. Amplify, AI-assisted engineering."
+<div style={{ position: 'relative', width: 848, height: 464, boxSizing: 'border-box', background: '#08090D', borderTop: '1px solid #1D2027', borderLeft: '1px solid #1D2027', borderRight: '1px solid #1D2027', borderTopLeftRadius: 24, borderTopRightRadius: 24, overflow: 'hidden', padding: '24px 23px 0', display: 'flex', flexDirection: 'column', fontFamily: 'Geist' }}>
   <style>{`
     @keyframes pulse { 0%, 100% { opacity: 1 } 50% { opacity: .35 } }
     @keyframes blink { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
     @keyframes drift { 0%, 100% { transform: translate(0, 0) scale(1) } 50% { transform: translate(-30px, 18px) scale(1.06) } }
-    @keyframes line2 { 0%, 40% { opacity: 0; transform: translateX(-6px) } 48%, 90% { opacity: 1; transform: translateX(0) } 100% { opacity: 0; transform: translateX(0) } }
-    @keyframes type { 0% { transform: scaleX(1); opacity: 1; animation-timing-function: steps(28, end) } 32% { transform: scaleX(0); opacity: 1 } 89.9% { transform: scaleX(0); opacity: 0 } 90% { transform: scaleX(1); opacity: 0 } 100% { transform: scaleX(1); opacity: 1 } }
-    @keyframes beam { to { stroke-dashoffset: -2348.5 } }
+    @keyframes seq { 0% { opacity: 0; transform: translateX(-6px) } 8%, 86% { opacity: 1; transform: translateX(0) } 100% { opacity: 0; transform: translateX(0) } }
     #hero-orbs { transform-box: fill-box; transform-origin: center; animation: drift 16s ease-in-out infinite }
     #hero-live { animation: pulse 2s ease-in-out infinite }
     #hero-cursor { animation: blink 1.1s steps(1) infinite }
-    path[fill="#9BA2AF"], path[fill="#4FB3B9"], #hero-l2-check, #hero-l2-cursor { animation: line2 7s ease-out infinite }
-    #hero-type-cover { opacity: 0; transform-box: fill-box; transform-origin: right; animation: type 7s linear infinite both }
-    #hero-beam-glow, #hero-beam { animation: beam 8s linear infinite }
-    path[fill="#F3F5F6"] { fill: url(#hero-name-shine) }
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important } path[fill="#F3F5F6"] { fill: #F3F5F7 } }
+    path[fill="#4FB3B9"], path[fill="#E6EAEF"], path[fill="#858C99"], path[fill="#9BA2AF"] { animation: seq 7s ease-out 0s infinite both }
+    path[fill="#4FB3BA"], path[fill="#E6EAF0"], path[fill="#858C9A"], path[fill="#9BA2B0"] { animation: seq 7s ease-out .6s infinite both }
+    path[fill="#4FB3BB"], path[fill="#E6EAF1"], path[fill="#858C9B"], path[fill="#9BA2B1"] { animation: seq 7s ease-out 1.2s infinite both }
+    path[fill="#4FB3BC"], path[fill="#E6EAF2"], path[fill="#858C9C"], path[fill="#9BA2B2"], #hero-l3-cursor { animation: seq 7s ease-out 1.8s infinite both }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important } }
   `}</style>
-  <svg width="846" height="445" viewBox="0 0 846 445" style={{ position: 'absolute', left: 0, top: 0 }}>
+  <svg width="846" height="463" viewBox="0 0 846 463" style={{ position: 'absolute', left: 0, top: 0 }}>
     <defs>
-      <radialGradient id="cv-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 0) scale(507.6 406.1)">
+      <radialGradient id="cv-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 0) scale(507.6 396.9)">
         <stop offset="0" stopColor="#3A2F8F" stopOpacity="0.35" />
         <stop offset="0.7" stopColor="#3A2F8F" stopOpacity="0" />
       </radialGradient>
-      <radialGradient id="cv-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 830.7) scale(465.3 332.3)">
+      <radialGradient id="cv-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 623.7) scale(465.3 340.2)">
         <stop offset="0" stopColor="#1D6B70" stopOpacity="0.22" />
         <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
       </radialGradient>
-      <radialGradient id="cv-3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 1846) scale(507.6 369.2)">
+      <radialGradient id="cv-3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 1134) scale(507.6 340.2)">
         <stop offset="0" stopColor="#1D6B70" stopOpacity="0.28" />
         <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
       </radialGradient>
     </defs>
-    <rect width="846" height="445" fill="url(#cv-1)" />
-    <rect width="846" height="445" fill="url(#cv-2)" />
-    <rect width="846" height="445" fill="url(#cv-3)" />
+    <rect width="846" height="463" fill="url(#cv-1)" />
+    <rect width="846" height="463" fill="url(#cv-2)" />
+    <rect width="846" height="463" fill="url(#cv-3)" />
   </svg>
-  <div style={{ position: 'relative', width: 800, height: 393, flexShrink: 0, boxSizing: 'border-box', borderRadius: 20, background: '#08090D', border: '1px solid #1D2027', overflow: 'hidden', padding: '48px 48px 40px', display: 'flex', flexDirection: 'column', gap: 28, color: '#F3F5F7' }}>
-    <svg width="798" height="391" viewBox="0 0 798 391" style={{ position: 'absolute', left: 0, top: 0 }}>
+  <div style={{ position: 'relative', width: 800, height: 411, flexShrink: 0, boxSizing: 'border-box', borderRadius: 20, background: '#08090D', border: '1px solid #1D2027', overflow: 'hidden', padding: '48px 48px 40px', display: 'flex', flexDirection: 'column', gap: 28, color: '#F3F5F7' }}>
+    <svg width="798" height="409" viewBox="0 0 798 409" style={{ position: 'absolute', left: 0, top: 0 }}>
       <defs>
-        <radialGradient id="hero-orb-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(784.6 -60) scale(550.8 357.7)">
+        <radialGradient id="hero-orb-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(784.6 -60) scale(550.8 370.3)">
           <stop offset="0" stopColor="#3A2F8F" stopOpacity="0.5" />
           <stop offset="0.7" stopColor="#3A2F8F" stopOpacity="0" />
         </radialGradient>
-        <radialGradient id="hero-orb-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-60 451) scale(504.9 306.6)">
+        <radialGradient id="hero-orb-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-60 469) scale(504.9 317.4)">
           <stop offset="0" stopColor="#1D6B70" stopOpacity="0.5" />
           <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
         </radialGradient>
-        {/* reflexo que atravessa o nome (coordenadas da fatia; o nome vai de x≈73 a x≈435) */}
-        <linearGradient id="hero-name-shine" x1="0" y1="0" x2="120" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#F3F5F7" />
-          <stop offset="0.5" stopColor="#A8E5E8" />
-          <stop offset="1" stopColor="#F3F5F7" />
-          <animateTransform attributeName="gradientTransform" type="translate" values="-60 0; 450 0; 450 0" keyTimes="0; 0.35; 1" dur="6s" repeatCount="indefinite" />
-        </linearGradient>
       </defs>
       <g id="hero-orbs">
-        <rect x="-60" y="-60" width="918" height="511" fill="url(#hero-orb-1)" />
-        <rect x="-60" y="-60" width="918" height="511" fill="url(#hero-orb-2)" />
+        <rect x="-60" y="-60" width="918" height="529" fill="url(#hero-orb-1)" />
+        <rect x="-60" y="-60" width="918" height="529" fill="url(#hero-orb-2)" />
       </g>
     </svg>
     <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -76,76 +65,45 @@
         <svg width="7" height="7" viewBox="0 0 7 7"><circle id="hero-live" cx="3.5" cy="3.5" r="3.5" fill="#4FB3B8" /></svg>
         <span>Brazilian · based in Málaga, ES · remote only</span>
       </div>
-      {/* #F3F5F6: um tom fora da paleta só para o CSS trocar o preenchimento pelo reflexo */}
-      <div style={{ fontFamily: 'GeistSemiBold', fontSize: 52, lineHeight: 1.05, letterSpacing: -1.56, color: '#F3F5F6' }}>José Vieira Neto</div>
-      <div style={{ width: 686, fontSize: 19, lineHeight: 1.5, color: '#9BA2AE' }}>Senior Software Engineer | Payments & fintech | Distributed Systems | AI</div>
+      <div style={{ fontFamily: 'GeistSemiBold', fontSize: 52, lineHeight: 1.05, letterSpacing: -1.56 }}>José Vieira Neto</div>
+      <div style={{ fontSize: 19, lineHeight: 1.5, color: '#9BA2AE' }}>Senior Software Engineer building scalable systems and AI-powered products</div>
     </div>
-    <div style={{ position: 'relative', height: 152, flexShrink: 0, boxSizing: 'border-box', borderRadius: 14, border: '1px solid #22262E', background: '#0E1015', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <svg width="700" height="150" viewBox="0 0 700 150" style={{ position: 'absolute', left: 0, top: 0 }}>
+    <div style={{ position: 'relative', height: 170, flexShrink: 0, boxSizing: 'border-box', borderRadius: 14, border: '1px solid #22262E', background: '#0E1015', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <svg width="700" height="168" viewBox="0 0 700 168" style={{ position: 'absolute', left: 0, top: 0 }}>
         <defs>
           <pattern id="hero-grid" width="14" height="14" patternUnits="userSpaceOnUse">
             <rect width="14" height="1" fill="#FFFFFF" fillOpacity="0.045" />
             <rect width="1" height="14" fill="#FFFFFF" fillOpacity="0.045" />
           </pattern>
         </defs>
-        <rect width="700" height="150" fill="url(#hero-grid)" />
+        <rect width="700" height="168" fill="url(#hero-grid)" />
       </svg>
-      <div style={{ position: 'relative', boxSizing: 'border-box', minWidth: 300, padding: '16px 22px', borderRadius: 14, border: '1px solid #2C313A', background: '#07080B', display: 'flex', flexDirection: 'column', gap: 6, fontFamily: 'GeistMono', fontSize: 13, lineHeight: '17px', color: '#E6EAEE' }}>
-        <div style={{ display: 'flex', whiteSpace: 'pre' }}>
-          <span style={{ color: '#4FB3B8' }}>›</span>
-          <span> deploy idea --to production</span>
-        </div>
-        {/* linha 2: cores #9BA2AF/#4FB3B9 (um tom fora da paleta) só para o CSS animar estes paths */}
-        <div style={{ display: 'flex', alignItems: 'center', whiteSpace: 'pre', color: '#9BA2AF' }}>
-          <div style={{ width: 15.6, height: 17 }} />
-          <svg width="7.8" height="17" viewBox="0 0 7.8 17"><g id="hero-l2-check"><path d="M1 9.6 3.2 11.9 7 5.6" fill="none" stroke="#4FB3B8" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></g></svg>
-          <span style={{ color: '#4FB3B9' }}> shipped</span>
-          <span> · payments · fintech · AI</span>
-          <svg width="7.8" height="17" viewBox="0 0 7.8 17"><g id="hero-l2-cursor"><rect id="hero-cursor" width="2.925" height="17" fill="#4FB3B8" /></g></svg>
-        </div>
-        {/* digitação: retângulo da cor do terminal sobre o comando, encolhendo 1 caractere (7.8px) por passo.
-            Fica com opacity 0 fora da animação, então sem CSS/movimento o comando aparece inteiro. */}
-        <svg width="250" height="17" viewBox="0 0 250 17" style={{ position: 'absolute', left: 29.8, top: 16 }}>
-          <rect id="hero-type-cover" width="219" height="17" fill="#07080B" />
-        </svg>
+      {/* as linhas entram em sequência: cada linha usa tons próprios (fora da paleta por 1 no último
+          dígito, imperceptível) só para o CSS animar os paths dela com o atraso certo */}
+      <div style={{ position: 'relative', boxSizing: 'border-box', minWidth: 440, padding: '18px 24px', borderRadius: 14, border: '1px solid #2C313A', background: '#07080B', display: 'flex', flexDirection: 'column', gap: 8, fontFamily: 'GeistMono', fontSize: 13, lineHeight: '17px' }}>
+        {[
+          ['design', 'system design, APIs, data models', ['#4FB3B9', '#E6EAEF', '#858C99', '#9BA2AF']],
+          ['build', 'Java · Spring Boot · event-driven', ['#4FB3BA', '#E6EAF0', '#858C9A', '#9BA2B0']],
+          ['ship', 'AWS · CI/CD · observability', ['#4FB3BB', '#E6EAF1', '#858C9B', '#9BA2B1']],
+          ['amplify', 'AI-assisted engineering', ['#4FB3BC', '#E6EAF2', '#858C9C', '#9BA2B2']],
+        ].map(([cmd, desc, [prompt, label, arrow, text]], i) => (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, whiteSpace: 'pre' }}>
+            <span style={{ color: prompt }}>›</span>
+            <span style={{ width: 64, color: label }}>{cmd}</span>
+            <span style={{ color: arrow }}>→</span>
+            <div style={{ display: 'flex', alignItems: 'center', color: text }}>
+              <span>{desc}</span>
+              {i === 3 && <svg width="7.8" height="17" viewBox="0 0 7.8 17"><g id="hero-l3-cursor"><rect id="hero-cursor" width="2.925" height="17" fill="#4FB3B8" /></g></svg>}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </div>
-  {/* feixe de luz percorrendo a borda do hero (perímetro do retângulo arredondado ≈ 2348.5) */}
-  <svg width="846" height="445" viewBox="0 0 846 445" style={{ position: 'absolute', left: 0, top: 0 }}>
-    <rect id="hero-beam-glow" x="23.5" y="24.5" width="799" height="392" rx="19.5" fill="none" stroke="#4FB3B8" strokeOpacity="0.25" strokeWidth="3" strokeLinecap="round" strokeDasharray="160 2188.5" />
-    <rect id="hero-beam" x="23.5" y="24.5" width="799" height="392" rx="19.5" fill="none" stroke="#4FB3B8" strokeOpacity="0.9" strokeWidth="1" strokeLinecap="round" strokeDasharray="0 25 110 2213.5" />
-  </svg>
 </div>
 ```
 
-```aura width=276 height=46 inline alt=""
-<div style={{ width: 276, height: 46, boxSizing: 'border-box', background: '#08090D', borderLeft: '1px solid #1D2027' }} />
-```
-
-```aura width=162 height=46 link="mailto:josevieiraneto.dev@gmail.com" inline alt="Get in touch"
-<div style={{ width: 162, height: 46, background: '#08090D', display: 'flex', justifyContent: 'center' }}>
-  <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 46, padding: '0 20px', borderRadius: 23, border: '1px solid rgba(79, 179, 184, 0.45)', background: '#08090D', color: '#F3F5F7', fontFamily: 'Geist', fontSize: 15 }}>
-    <svg width="16" height="16" viewBox="0 0 24 24"><g transform="scale(0.666667)" fill="none" stroke="#4FB3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></g></svg>
-    <span>Get in touch</span>
-  </div>
-</div>
-```
-
-```aura width=134 height=46 link="https://linkedin.com/in/josevieiraneto" inline alt="LinkedIn"
-<div style={{ width: 134, height: 46, background: '#08090D', display: 'flex', justifyContent: 'center' }}>
-  <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 46, padding: '0 20px', borderRadius: 23, border: '1px solid #323843', background: '#08090D', color: '#F3F5F7', fontFamily: 'Geist', fontSize: 15 }}>
-    <svg width="16" height="16" viewBox="0 0 24 24"><g transform="scale(0.666667)" fill="none" stroke="#F3F5F7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></g></svg>
-    <span>LinkedIn</span>
-  </div>
-</div>
-```
-
-```aura width=276 height=46 inline alt=""
-<div style={{ width: 276, height: 46, boxSizing: 'border-box', background: '#08090D', borderRight: '1px solid #1D2027' }} />
-```
-
-```aura width=848 height=944 inline alt="Focus areas: Payments & Fintech (PIX, card settlement, Open Finance). Distributed Systems (microservices, event-driven architecture). Product & AI (end-to-end ownership, LLM features, AI Tools). About: Building products end to end, from design to production. 8 years as a software engineer across fintech, banking and integration platforms. In payments and core banking, I've built instant payments (PIX), card settlement, Open Finance and high-volume transaction systems. I care about why we're building something, not just how, I work close to product and business and like owning the whole thing. Today I work fully remote for a Brazilian company and ship my own products, from Java and Spring Boot services to Next.js frontends and LLM-powered features. Stack: Java, Kotlin, Spring Boot, Kafka, AWS, Docker, PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch, Grafana, Next.js, React, TypeScript, Tailwind, Datadog, Claude."
+```aura width=848 height=672 inline alt="About: Building products end to end, from design to production. 8 years as a software engineer across fintech, banking and integration platforms. In payments and core banking, I've built instant payments (PIX), card settlement, Open Finance and high-volume transaction systems. I care about why we're building something, not just how, I work close to product and business and like owning the whole thing. Today I work fully remote for a Brazilian company and ship my own products, from Java and Spring Boot services to Next.js frontends and LLM-powered features. Stack: Java, Kotlin, Spring Boot, Kafka, AWS, Docker, PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch, Grafana. Always happy to talk about business & technology. Málaga, ES · UTC+1."
 (() => {
   const stack = [
     // simple-icons: openjdk
@@ -172,89 +130,36 @@
     ["Elasticsearch", "M13.394 0C8.683 0 4.609 2.716 2.644 6.667h15.641a4.77 4.77 0 0 0 3.073-1.11c.446-.375.864-.785 1.247-1.243l.001-.002A11.974 11.974 0 0 0 13.394 0zM1.804 8.889a12.009 12.009 0 0 0 0 6.222h14.7a3.111 3.111 0 1 0 0-6.222zm.84 8.444C4.61 21.283 8.684 24 13.395 24c3.701 0 7.011-1.677 9.212-4.312l-.001-.002a9.958 9.958 0 0 0-1.247-1.243 4.77 4.77 0 0 0-3.073-1.11z"],
     // simple-icons: grafana
     ["Grafana", "M23.02 10.59a8.578 8.578 0 0 0-.862-3.034 8.911 8.911 0 0 0-1.789-2.445c.337-1.342-.413-2.505-.413-2.505-1.292-.08-2.113.4-2.416.62-.052-.02-.102-.044-.154-.064-.22-.089-.446-.172-.677-.247-.231-.073-.47-.14-.711-.197a9.867 9.867 0 0 0-.875-.161C14.557.753 12.94 0 12.94 0c-1.804 1.145-2.147 2.744-2.147 2.744l-.018.093c-.098.029-.2.057-.298.088-.138.042-.275.094-.413.143-.138.055-.275.107-.41.166a8.869 8.869 0 0 0-1.557.87l-.063-.029c-2.497-.955-4.716.195-4.716.195-.203 2.658.996 4.33 1.235 4.636a11.608 11.608 0 0 0-.607 2.635C1.636 12.677.953 15.014.953 15.014c1.926 2.214 4.171 2.351 4.171 2.351.003-.002.006-.002.006-.005.285.509.615.994.986 1.446.156.19.32.371.488.548-.704 2.009.099 3.68.099 3.68 2.144.08 3.553-.937 3.849-1.173a9.784 9.784 0 0 0 3.164.501h.08l.055-.003.107-.002.103-.005.003.002c1.01 1.44 2.788 1.646 2.788 1.646 1.264-1.332 1.337-2.653 1.337-2.94v-.058c0-.02-.003-.039-.003-.06.265-.187.52-.387.758-.6a7.875 7.875 0 0 0 1.415-1.7c1.43.083 2.437-.885 2.437-.885-.236-1.49-1.085-2.216-1.264-2.354l-.018-.013-.016-.013a.217.217 0 0 1-.031-.02c.008-.092.016-.18.02-.27.011-.162.016-.323.016-.48v-.253l-.005-.098-.008-.135a1.891 1.891 0 0 0-.01-.13c-.003-.042-.008-.083-.013-.125l-.016-.124-.018-.122a6.215 6.215 0 0 0-2.032-3.73 6.015 6.015 0 0 0-3.222-1.46 6.292 6.292 0 0 0-.85-.048l-.107.002h-.063l-.044.003-.104.008a4.777 4.777 0 0 0-3.335 1.695c-.332.4-.592.84-.768 1.297a4.594 4.594 0 0 0-.312 1.817l.003.091c.005.055.007.11.013.164a3.615 3.615 0 0 0 .698 1.82 3.53 3.53 0 0 0 1.827 1.282c.33.098.66.14.971.137.039 0 .078 0 .114-.002l.063-.003c.02 0 .041-.003.062-.003.034-.002.065-.007.099-.01.007 0 .018-.003.028-.003l.031-.005.06-.008a1.18 1.18 0 0 0 .112-.02c.036-.008.072-.013.109-.024a2.634 2.634 0 0 0 .914-.415c.028-.02.056-.041.085-.065a.248.248 0 0 0 .039-.35.244.244 0 0 0-.309-.06l-.078.042c-.09.044-.184.083-.283.116a2.476 2.476 0 0 1-.475.096c-.028.003-.054.006-.083.006l-.083.002c-.026 0-.054 0-.08-.002l-.102-.006h-.012l-.024.006c-.016-.003-.031-.003-.044-.006-.031-.002-.06-.007-.091-.01a2.59 2.59 0 0 1-.724-.213 2.557 2.557 0 0 1-.667-.438 2.52 2.52 0 0 1-.805-1.475 2.306 2.306 0 0 1-.029-.444l.006-.122v-.023l.002-.031c.003-.021.003-.04.005-.06a3.163 3.163 0 0 1 1.352-2.29 3.12 3.12 0 0 1 .937-.43 2.946 2.946 0 0 1 .776-.101h.06l.07.002.045.003h.026l.07.005a4.041 4.041 0 0 1 1.635.49 3.94 3.94 0 0 1 1.602 1.662 3.77 3.77 0 0 1 .397 1.414l.005.076.003.075c.002.026.002.05.002.075 0 .024.003.052 0 .07v.065l-.002.073-.008.174a6.195 6.195 0 0 1-.08.639 5.1 5.1 0 0 1-.267.927 5.31 5.31 0 0 1-.624 1.13 5.052 5.052 0 0 1-3.237 2.014 4.82 4.82 0 0 1-.649.066l-.039.003h-.287a6.607 6.607 0 0 1-1.716-.265 6.776 6.776 0 0 1-3.4-2.274 6.75 6.75 0 0 1-.746-1.15 6.616 6.616 0 0 1-.714-2.596l-.005-.083-.002-.02v-.056l-.003-.073v-.096l-.003-.104v-.07l.003-.163c.008-.22.026-.45.054-.678a8.707 8.707 0 0 1 .28-1.355c.128-.444.286-.872.473-1.277a7.04 7.04 0 0 1 1.456-2.1 5.925 5.925 0 0 1 .953-.763c.169-.111.343-.213.524-.306.089-.05.182-.091.273-.135.047-.02.093-.042.138-.062a7.177 7.177 0 0 1 .714-.267l.145-.045c.049-.015.098-.026.148-.041.098-.029.197-.052.296-.076.049-.013.1-.02.15-.033l.15-.032.151-.028.076-.013.075-.01.153-.024c.057-.01.114-.013.171-.023l.169-.021c.036-.003.073-.008.106-.01l.073-.008.036-.003.042-.002c.057-.003.114-.008.171-.01l.086-.006h.023l.037-.003.145-.007a7.999 7.999 0 0 1 1.708.125 7.917 7.917 0 0 1 2.048.68 8.253 8.253 0 0 1 1.672 1.09l.09.077.089.078c.06.052.114.107.171.159.057.052.112.106.166.16.052.055.107.107.159.164a8.671 8.671 0 0 1 1.41 1.978c.012.026.028.052.04.078l.04.078.075.156c.023.051.05.1.07.153l.065.15a8.848 8.848 0 0 1 .45 1.34.19.19 0 0 0 .201.142.186.186 0 0 0 .172-.184c.01-.246.002-.532-.024-.856z"],
-    // simple-icons: nextdotjs
-    ["Next.js", "M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z"],
-    // simple-icons: react
-    ["React", "M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"],
-    // simple-icons: typescript
-    ["TypeScript", "M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"],
-    // simple-icons: tailwindcss
-    ["Tailwind", "M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"],
-    // simple-icons: datadog
-    ["Datadog", "M19.57 17.04l-1.997-1.316-1.665 2.782-1.937-.567-1.706 2.604.087.82 9.274-1.71-.538-5.794zm-8.649-2.498l1.488-.204c.241.108.409.15.697.223.45.117.97.23 1.741-.16.18-.088.553-.43.704-.625l6.096-1.106.622 7.527-10.444 1.882zm11.325-2.712l-.602.115L20.488 0 .789 2.285l2.427 19.693 2.306-.334c-.184-.263-.471-.581-.96-.989-.68-.564-.44-1.522-.039-2.127.53-1.022 3.26-2.322 3.106-3.956-.056-.594-.15-1.368-.702-1.898-.02.22.017.432.017.432s-.227-.289-.34-.683c-.112-.15-.2-.199-.319-.4-.085.233-.073.503-.073.503s-.186-.437-.216-.807c-.11.166-.137.48-.137.48s-.241-.69-.186-1.062c-.11-.323-.436-.965-.343-2.424.6.421 1.924.321 2.44-.439.171-.251.288-.939-.086-2.293-.24-.868-.835-2.16-1.066-2.651l-.028.02c.122.395.374 1.223.47 1.625.293 1.218.372 1.642.234 2.204-.116.488-.397.808-1.107 1.165-.71.358-1.653-.514-1.713-.562-.69-.55-1.224-1.447-1.284-1.883-.062-.477.275-.763.445-1.153-.243.07-.514.192-.514.192s.323-.334.722-.624c.165-.109.262-.178.436-.323a9.762 9.762 0 0 0-.456.003s.42-.227.855-.392c-.318-.014-.623-.003-.623-.003s.937-.419 1.678-.727c.509-.208 1.006-.147 1.286.257.367.53.752.817 1.569.996.501-.223.653-.337 1.284-.509.554-.61.99-.688.99-.688s-.216.198-.274.51c.314-.249.66-.455.66-.455s-.134.164-.259.426l.03.043c.366-.22.797-.394.797-.394s-.123.156-.268.358c.277-.002.838.012 1.056.037 1.285.028 1.552-1.374 2.045-1.55.618-.22.894-.353 1.947.68.903.888 1.609 2.477 1.259 2.833-.294.295-.874-.115-1.516-.916a3.466 3.466 0 0 1-.716-1.562 1.533 1.533 0 0 0-.497-.85s.23.51.23.96c0 .246.03 1.165.424 1.68-.039.076-.057.374-.1.43-.458-.554-1.443-.95-1.604-1.067.544.445 1.793 1.468 2.273 2.449.453.927.186 1.777.416 1.997.065.063.976 1.197 1.15 1.767.306.994.019 2.038-.381 2.685l-1.117.174c-.163-.045-.273-.068-.42-.153.08-.143.241-.5.243-.572l-.063-.111c-.348.492-.93.97-1.414 1.245-.633.359-1.363.304-1.838.156-1.348-.415-2.623-1.327-2.93-1.566 0 0-.01.191.048.234.34.383 1.119 1.077 1.872 1.56l-1.605.177.759 5.908c-.337.048-.39.071-.757.124-.325-1.147-.946-1.895-1.624-2.332-.599-.384-1.424-.47-2.214-.314l-.05.059a2.851 2.851 0 0 1 1.863.444c.654.413 1.181 1.481 1.375 2.124.248.822.42 1.7-.248 2.632-.476.662-1.864 1.028-2.986.237.3.481.705.876 1.25.95.809.11 1.577-.03 2.106-.574.452-.464.69-1.434.628-2.456l.714-.104.258 1.834 11.827-1.424zM15.05 6.848c-.034.075-.085.125-.007.37l.004.014.013.032.032.073c.14.287.295.558.552.696.067-.011.136-.019.207-.023.242-.01.395.028.492.08.009-.048.01-.119.005-.222-.018-.364.072-.982-.626-1.308-.264-.122-.634-.084-.757.068a.302.302 0 0 1 .058.013c.186.066.06.13.027.207m1.958 3.392c-.092-.05-.52-.03-.821.005-.574.068-1.193.267-1.328.372-.247.191-.135.523.047.66.511.382.96.638 1.432.575.29-.038.546-.497.728-.914.124-.288.124-.598-.058-.698m-5.077-2.942c.162-.154-.805-.355-1.556.156-.554.378-.571 1.187-.041 1.646.053.046.096.078.137.104a4.77 4.77 0 0 1 1.396-.412c.113-.125.243-.345.21-.745-.044-.542-.455-.456-.146-.749"],
-    // simple-icons: anthropic
-    ["Claude", "M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"],
   ];
   const floatDelays = stack.map((_, i) => `#stack-icon-${i} { animation-delay: ${((i % 6) * 0.35 + Math.floor(i / 6) * 0.2).toFixed(2)}s }`).join('\n');
-  // entrada em cascata (uma vez, ao carregar): tampa da cor do fundo some + ícone sobe
-  const entryDelays = stack.map((_, i) => `#stack-cover-${i}, #stack-rise-${i} { animation-delay: ${(0.3 + i * 0.07).toFixed(2)}s }`).join('\n');
-  const card = { boxSizing: 'border-box', borderRadius: 16, border: '1px solid #22262E', background: '#08090D', color: '#F3F5F7' };
   return (
-    <div style={{ position: 'relative', width: 848, height: 944, boxSizing: 'border-box', background: '#08090D', borderLeft: '1px solid #1D2027', borderRight: '1px solid #1D2027', padding: '28px 23px 0', display: 'flex', flexDirection: 'column', gap: 28, fontFamily: 'Geist' }}>
+    <div style={{ position: 'relative', width: 848, height: 672, boxSizing: 'border-box', background: '#08090D', borderLeft: '1px solid #1D2027', borderRight: '1px solid #1D2027', borderBottom: '1px solid #1D2027', borderBottomLeftRadius: 24, borderBottomRightRadius: 24, overflow: 'hidden', padding: '0 23px 24px', display: 'flex', flexDirection: 'column', gap: 28, fontFamily: 'Geist' }}>
       <style>{`
-        @keyframes glow { 0%, 100% { opacity: .55 } 50% { opacity: 1 } }
         @keyframes float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-4px) } }
-        #focus-icon-0, #focus-icon-1, #focus-icon-2 { animation: glow 3s ease-in-out infinite }
-        #focus-icon-1 { animation-delay: 1s }
-        #focus-icon-2 { animation-delay: 2s }
         ${stack.map((_, i) => `#stack-icon-${i}`).join(', ')} { animation: float 4s ease-in-out infinite }
         ${floatDelays}
-        @keyframes reveal { from { opacity: 1 } to { opacity: 0 } }
-        @keyframes rise { from { transform: translateY(8px) } to { transform: translateY(0) } }
-        ${stack.map((_, i) => `#stack-cover-${i}`).join(', ')} { opacity: 0; animation: reveal .5s ease-out both }
-        ${stack.map((_, i) => `#stack-rise-${i}`).join(', ')} { animation: rise .6s ease-out both }
-        ${entryDelays}
         @media (prefers-reduced-motion: reduce) { * { animation: none !important } }
       `}</style>
-      <svg width="846" height="944" viewBox="0 0 846 944" style={{ position: 'absolute', left: 0, top: 0 }}>
+      <svg width="846" height="671" viewBox="0 0 846 671" style={{ position: 'absolute', left: 0, top: 0 }}>
         <defs>
-          <radialGradient id="cv-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 -491) scale(507.6 406.1)">
+          <radialGradient id="cv-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 -463) scale(507.6 396.9)">
             <stop offset="0" stopColor="#3A2F8F" stopOpacity="0.35" />
             <stop offset="0.7" stopColor="#3A2F8F" stopOpacity="0" />
           </radialGradient>
-          <radialGradient id="cv-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 339.7) scale(465.3 332.3)">
+          <radialGradient id="cv-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 160.7) scale(465.3 340.2)">
             <stop offset="0" stopColor="#1D6B70" stopOpacity="0.22" />
             <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
           </radialGradient>
-          <radialGradient id="cv-3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 1355) scale(507.6 369.2)">
+          <radialGradient id="cv-3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 671) scale(507.6 340.2)">
             <stop offset="0" stopColor="#1D6B70" stopOpacity="0.28" />
             <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
           </radialGradient>
         </defs>
-        <rect width="846" height="944" fill="url(#cv-1)" />
-        <rect width="846" height="944" fill="url(#cv-2)" />
-        <rect width="846" height="944" fill="url(#cv-3)" />
+        <rect width="846" height="671" fill="url(#cv-1)" />
+        <rect width="846" height="671" fill="url(#cv-2)" />
+        <rect width="846" height="671" fill="url(#cv-3)" />
       </svg>
-      <div style={{ position: 'relative', display: 'flex', gap: 16 }}>
-        <div style={{ ...card, flex: 1, height: 150, padding: 24, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-          <svg width="26" height="26" viewBox="0 0 24 24"><g id="focus-icon-0"><g transform="scale(1.083333)" fill="none" stroke="#4FB3B8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="5" width="20" height="14" rx="2" /><path d="M2 10h20" /><path d="M6 15h4" /></g></g></svg>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <span style={{ fontFamily: 'GeistSemiBold', fontSize: 17, lineHeight: '22px' }}>Payments & Fintech</span>
-            <div style={{ display: 'flex', flexDirection: 'column', fontSize: 13, lineHeight: '17px', color: '#9BA2AE' }}>
-              <span>PIX · card settlement · </span>
-              <span>Open Finance</span>
-            </div>
-          </div>
-        </div>
-        <div style={{ ...card, flex: 1, height: 150, padding: 24, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-          <svg width="26" height="26" viewBox="0 0 24 24"><g id="focus-icon-1"><g transform="scale(1.083333)" fill="none" stroke="#4FB3B8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="2" width="6" height="6" rx="1" /><rect x="2" y="16" width="6" height="6" rx="1" /><rect x="16" y="16" width="6" height="6" rx="1" /><path d="M12 8v4M5 16v-2h14v2" /></g></g></svg>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <span style={{ fontFamily: 'GeistSemiBold', fontSize: 17, lineHeight: '22px' }}>Distributed Systems</span>
-            <span style={{ fontSize: 13, lineHeight: '17px', color: '#9BA2AE' }}>microservices · event-driven architecture</span>
-          </div>
-        </div>
-        <div style={{ ...card, flex: 1, height: 150, padding: 24, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-          <svg width="26" height="26" viewBox="0 0 24 24"><g id="focus-icon-2"><g transform="scale(1.083333)" fill="none" stroke="#4FB3B8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z" /><path d="M19 17v4M17 19h4" /></g></g></svg>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <span style={{ fontFamily: 'GeistSemiBold', fontSize: 17, lineHeight: '22px' }}>Product & AI</span>
-            <div style={{ display: 'flex', flexDirection: 'column', fontSize: 13, lineHeight: '17px', color: '#9BA2AE' }}>
-              <span>end-to-end ownership · </span>
-              <span>{'LLM features  · AI Tools'}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div style={{ ...card, position: 'relative', height: 270, flexShrink: 0, overflow: 'hidden', padding: '32px 36px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <div style={{ position: 'relative', height: 270, flexShrink: 0, boxSizing: 'border-box', borderRadius: 16, border: '1px solid #22262E', background: '#08090D', overflow: 'hidden', padding: '32px 36px', display: 'flex', flexDirection: 'column', gap: 14, color: '#F3F5F7' }}>
         <svg width="798" height="268" viewBox="0 0 798 268" style={{ position: 'absolute', left: 0, top: 0 }}>
           <defs>
             <radialGradient id="about-orb-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 268) scale(359.1 214.4)">
@@ -273,7 +178,7 @@
         <div style={{ position: 'relative', fontFamily: 'GeistSemiBold', fontSize: 26, lineHeight: 1.25, letterSpacing: -0.52 }}>Building products end to end, from design to production</div>
         <div style={{ position: 'relative', fontSize: 15, lineHeight: 1.7, color: '#9BA2AE' }}>8 years as a software engineer across fintech, banking and integration platforms. In payments and core banking, I've built instant payments (PIX), card settlement, Open Finance and high-volume transaction systems. I care about why we're building something, not just how, I work close to product and business and like owning the whole thing. Today I work fully remote for a Brazilian company and ship my own products, from Java and Spring Boot services to Next.js frontends and LLM-powered features.</div>
       </div>
-      <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 18 }}>
+      <div style={{ position: 'relative', height: 288, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 18 }}>
         <span style={{ fontFamily: 'GeistSemiBold', fontSize: 26, lineHeight: '34px', letterSpacing: -0.52, color: '#F3F5F7' }}>Stack</span>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
           {stack.map(([name, path], i) => (
@@ -286,161 +191,18 @@
                 </defs>
                 <rect width="121.33" height="110" fill={`url(#stack-dots-${i})`} />
               </svg>
-              {/* 8px a mais em cima e embaixo para o "float" (-4px) e o "rise" (+8px) não serem cortados pelo viewport do SVG */}
-              <svg width="30" height="46" viewBox="0 0 30 46" style={{ marginTop: -8, marginBottom: -8 }}><g transform="translate(0 8)"><g id={`stack-rise-${i}`}><g id={`stack-icon-${i}`}><g transform="scale(1.25)"><path d={path} fill="#4FB3B8" /></g></g></g></g></svg>
+              {/* 4px a mais em cima e embaixo para o "float" (-4px) não ser cortado pelo viewport do SVG */}
+              <svg width="30" height="38" viewBox="0 0 30 38" style={{ marginTop: -4, marginBottom: -4 }}><g transform="translate(0 4)"><g id={`stack-icon-${i}`}><g transform="scale(1.25)"><path d={path} fill="#4FB3B8" /></g></g></g></svg>
               <span style={{ fontFamily: 'GeistMono', fontSize: 11, lineHeight: '14px', color: '#C4CAD3' }}>{name}</span>
             </div>
           ))}
         </div>
-        {/* tampas da entrada em cascata, uma por tile (opacity 0 fora da animação) */}
-        <svg width="800" height="360" viewBox="0 0 800 360" style={{ position: 'absolute', left: 0, top: 52 }}>
-          {stack.map((_, i) => <rect id={`stack-cover-${i}`} x={(i % 6) * 135.33 - 0.5} y={Math.floor(i / 6) * 124 - 0.5} width="124.33" height="113" rx="14" fill="#08090D" />)}
-        </svg>
+      </div>
+      <div style={{ position: 'relative', width: 800, display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16, borderTop: '1px solid #22262E', fontFamily: 'GeistMono', fontSize: 12, lineHeight: '16px', color: '#858C98' }}>
+        <span>Always happy to talk about business & technology</span>
+        <span>Málaga, ES · UTC+1</span>
       </div>
     </div>
   );
 })()
 ```
-
-```aura width=848 height=354 inline alt="Now building · SaaS: Stackround. AI-powered technical interview simulator for tech professionals preparing for interviews in English. Audio questions with natural accents, real-time answers, and feedback on technical depth, communication and English. Built with Java 21, Spring Boot, Spring AI, Spring Security, Auth0, Claude, ElevenLabs, OpenAI Whisper, Paddle, Next.js 16, React 19, TypeScript, PostgreSQL."
-<div style={{ position: 'relative', width: 848, height: 354, boxSizing: 'border-box', background: '#08090D', borderLeft: '1px solid #1D2027', borderRight: '1px solid #1D2027', padding: '0 23px', display: 'flex', alignItems: 'flex-start', fontFamily: 'Geist' }}>
-  <style>{`
-    @keyframes pulse { 0%, 100% { opacity: 1 } 50% { opacity: .35 } }
-    @keyframes drift2 { 0%, 100% { transform: translate(0, 0) scale(1) } 50% { transform: translate(26px, -14px) scale(1.08) } }
-    @keyframes eq { 0%, 100% { transform: scaleY(.35) } 50% { transform: scaleY(1) } }
-    #nb-orbs { transform-box: fill-box; transform-origin: center; animation: drift2 18s ease-in-out infinite }
-    #nb-live { animation: pulse 2s ease-in-out infinite }
-    #nb-eq-0, #nb-eq-1, #nb-eq-2, #nb-eq-3, #nb-eq-4, #nb-eq-5 { transform-box: fill-box; transform-origin: 50% 100%; animation: eq 1.1s ease-in-out infinite }
-    #nb-eq-1 { animation-delay: .25s }
-    #nb-eq-2 { animation-delay: .5s }
-    #nb-eq-3 { animation-delay: .15s }
-    #nb-eq-4 { animation-delay: .4s }
-    #nb-eq-5 { animation-delay: .65s }
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important } }
-  `}</style>
-  <svg width="846" height="354" viewBox="0 0 846 354" style={{ position: 'absolute', left: 0, top: 0 }}>
-    <defs>
-      <radialGradient id="cv-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 -1435) scale(507.6 406.1)">
-        <stop offset="0" stopColor="#3A2F8F" stopOpacity="0.35" />
-        <stop offset="0.7" stopColor="#3A2F8F" stopOpacity="0" />
-      </radialGradient>
-      <radialGradient id="cv-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 -604.3) scale(465.3 332.3)">
-        <stop offset="0" stopColor="#1D6B70" stopOpacity="0.22" />
-        <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
-      </radialGradient>
-      <radialGradient id="cv-3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 411) scale(507.6 369.2)">
-        <stop offset="0" stopColor="#1D6B70" stopOpacity="0.28" />
-        <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
-      </radialGradient>
-    </defs>
-    <rect width="846" height="354" fill="url(#cv-1)" />
-    <rect width="846" height="354" fill="url(#cv-2)" />
-    <rect width="846" height="354" fill="url(#cv-3)" />
-  </svg>
-  <div style={{ position: 'relative', width: 800, height: 326, flexShrink: 0, boxSizing: 'border-box', borderRadius: 20, border: '1px solid #1D2027', background: '#08090D', overflow: 'hidden', padding: 32, display: 'flex', gap: 28, alignItems: 'center', color: '#F3F5F7' }}>
-    <svg width="798" height="324" viewBox="0 0 798 324" style={{ position: 'absolute', left: 0, top: 0 }}>
-      <defs>
-        <radialGradient id="nb-orb-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(848 -50) scale(449 339.2)">
-          <stop offset="0" stopColor="#3A2F8F" stopOpacity="0.4" />
-          <stop offset="0.7" stopColor="#3A2F8F" stopOpacity="0" />
-        </radialGradient>
-        <radialGradient id="nb-orb-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(84.7 416.4) scale(404.1 296.8)">
-          <stop offset="0" stopColor="#1D6B70" stopOpacity="0.4" />
-          <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-      <g id="nb-orbs">
-        <rect x="-50" y="-50" width="898" height="424" fill="url(#nb-orb-1)" />
-        <rect x="-50" y="-50" width="898" height="424" fill="url(#nb-orb-2)" />
-      </g>
-    </svg>
-    <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column', gap: 14 }}>
-      <div style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 8, padding: '5px 12px', borderRadius: 999, border: '1px solid #323843', fontFamily: 'GeistMono', fontSize: 11, lineHeight: '14px', color: '#C4CAD3' }}>
-        <svg width="7" height="7" viewBox="0 0 7 7"><circle id="nb-live" cx="3.5" cy="3.5" r="3.5" fill="#4FB3B8" /></svg>
-        <span>now building · SaaS</span>
-      </div>
-      <div style={{ fontFamily: 'GeistSemiBold', fontSize: 38, lineHeight: 1, letterSpacing: -1.14 }}>Stackround</div>
-      <div style={{ fontSize: 15, lineHeight: 1.6, color: '#9BA2AE' }}>AI-powered technical interview simulator for tech professionals preparing for interviews in English. Audio questions with natural accents, real-time answers, and feedback on technical depth, communication and English.</div>
-      <div style={{ display: 'flex', flexDirection: 'column', fontFamily: 'GeistMono', fontSize: 12, lineHeight: 1.6, color: '#858C98' }}>
-        <span>Java 21 · Spring Boot · Spring AI · Spring Security </span>
-        <span>Auth0 · Claude · ElevenLabs · OpenAI Whisper · Paddle</span>
-        <span>Next.js 16 · React 19 · TypeScript · PostgreSQL</span>
-      </div>
-    </div>
-    <div style={{ position: 'relative', width: 290, height: 210, flexShrink: 0, boxSizing: 'border-box', borderRadius: 14, border: '1px solid #22262E', background: '#0E1015', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
-      <svg width="288" height="208" viewBox="0 0 288 208" style={{ position: 'absolute', left: 0, top: 0 }}>
-        <defs>
-          <pattern id="nb-grid" width="14" height="14" patternUnits="userSpaceOnUse">
-            <rect width="14" height="1" fill="#FFFFFF" fillOpacity="0.045" />
-            <rect width="1" height="14" fill="#FFFFFF" fillOpacity="0.045" />
-          </pattern>
-        </defs>
-        <rect width="288" height="208" fill="url(#nb-grid)" />
-      </svg>
-      <div style={{ width: '100%', boxSizing: 'border-box', padding: 16, borderRadius: 12, border: '1px solid #2C313A', background: '#07080B', display: 'flex', flexDirection: 'column', gap: 10, fontSize: 13, lineHeight: 1.5 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <svg width="33" height="16" viewBox="0 0 33 16">
-            {[0, 1, 2, 3, 4, 5].map((j) => <rect id={`nb-eq-${j}`} x={j * 6} width="3" height="16" rx="1.5" fill="#4FB3B8" />)}
-          </svg>
-          <span style={{ fontFamily: 'GeistMono', fontSize: 11, color: '#9BA2AE' }}>interviewer · audio</span>
-        </div>
-        <span style={{ color: '#F3F5F7' }}>"How would you make a payment API idempotent?"</span>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, fontFamily: 'GeistMono', fontSize: 11 }}>
-          <span style={{ padding: '3px 8px', borderRadius: 999, border: '1px solid #323843', color: '#C4CAD3' }}>depth</span>
-          <span style={{ padding: '3px 8px', borderRadius: 999, border: '1px solid #323843', color: '#C4CAD3' }}>clarity</span>
-          <span style={{ padding: '3px 8px', borderRadius: 999, border: '1px solid #323843', color: '#C4CAD3' }}>English</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
-```aura width=848 height=58 inline alt="Always happy to talk about business & technology. Málaga, ES · UTC+1."
-<div style={{ position: 'relative', width: 848, height: 58, boxSizing: 'border-box', background: '#08090D', borderLeft: '1px solid #1D2027', borderRight: '1px solid #1D2027', borderBottom: '1px solid #1D2027', borderBottomLeftRadius: 24, borderBottomRightRadius: 24, overflow: 'hidden', padding: '0 23px 24px', display: 'flex', fontFamily: 'GeistMono', fontSize: 12, lineHeight: '16px', color: '#858C98' }}>
-  <svg width="846" height="57" viewBox="0 0 846 57" style={{ position: 'absolute', left: 0, top: 0 }}>
-    <defs>
-      <radialGradient id="cv-1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 -1789) scale(507.6 406.1)">
-        <stop offset="0" stopColor="#3A2F8F" stopOpacity="0.35" />
-        <stop offset="0.7" stopColor="#3A2F8F" stopOpacity="0" />
-      </radialGradient>
-      <radialGradient id="cv-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 -958.3) scale(465.3 332.3)">
-        <stop offset="0" stopColor="#1D6B70" stopOpacity="0.22" />
-        <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
-      </radialGradient>
-      <radialGradient id="cv-3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(846 57) scale(507.6 369.2)">
-        <stop offset="0" stopColor="#1D6B70" stopOpacity="0.28" />
-        <stop offset="0.7" stopColor="#1D6B70" stopOpacity="0" />
-      </radialGradient>
-    </defs>
-    <rect width="846" height="57" fill="url(#cv-1)" />
-    <rect width="846" height="57" fill="url(#cv-2)" />
-    <rect width="846" height="57" fill="url(#cv-3)" />
-  </svg>
-  <div style={{ position: 'relative', width: 800, display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16, borderTop: '1px solid #22262E' }}>
-    <span>Always happy to talk about business & technology</span>
-    <span>Málaga, ES · UTC+1</span>
-  </div>
-</div>
-```
-
-<!-- Botões Website e Stackround: desativados até o deploy. Para reativar: preencha o link=,
-     troque `disabled-aura` por `aura`, mova-os para entre o LinkedIn e o preenchimento da direita
-     e reduza a largura dos dois preenchimentos para que a linha continue somando 848px.
-```disabled-aura width=142 height=46 link="[URL_DO_SITE]" inline alt="Website"
-<div style={{ width: 142, height: 46, background: '#08090D', display: 'flex', justifyContent: 'center' }}>
-  <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 46, padding: '0 20px', borderRadius: 23, border: '1px solid #323843', background: '#08090D', color: '#F3F5F7', fontFamily: 'Geist', fontSize: 15 }}>
-    <svg width="16" height="16" viewBox="0 0 24 24"><g transform="scale(0.666667)" fill="none" stroke="#F3F5F7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z" /></g></svg>
-    <span>Website</span>
-  </div>
-</div>
-```
-```disabled-aura width=155 height=46 link="[URL_DO_STACKROUND]" inline alt="Stackround"
-<div style={{ width: 155, height: 46, background: '#08090D', display: 'flex', justifyContent: 'center' }}>
-  <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 46, padding: '0 20px', borderRadius: 23, border: '1px solid #323843', background: '#08090D', color: '#F3F5F7', fontFamily: 'Geist', fontSize: 15 }}>
-    <svg width="16" height="16" viewBox="0 0 24 24"><g transform="scale(0.666667)" fill="none" stroke="#4FB3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z" /></g></svg>
-    <span>Stackround</span>
-  </div>
-</div>
-```
--->
